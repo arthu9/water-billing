@@ -223,10 +223,11 @@ i.box-circle-solid{
 	z-index: 1;
 }
 .intro.intro-small{
-	height: 60%;
+	height: 100%;
 }
 .intro-bg{
 	background:url("img/1.jpg");
+	/*background-color: #DCDCDC;*/
 	background-repeat:no-repeat;
 	background-position: center center;
 	background-size:cover;
@@ -494,7 +495,7 @@ legend{
 .form .form-control { margin-bottom: 10px; }
 @media (min-width:768px) {
 	#home{
-		margin-top:50px;
+		margin-top:0px;
 	}
 	#home .slogan{
 		color: #0e385f;
@@ -502,3 +503,29 @@ legend{
 		font-weight:bold;
 	}
 }
+
+.hello {
+	background-color: #E6E6FA;
+	height: 80px;
+}
+
+.navbar-form .navbar-right{
+	/*margin-left: 10px;*/
+	margin-top: 50%;
+	margin-right: 80%;
+	background-color: transparent;
+}
+
+.brand{
+	margin-top: 50%;
+	font-size: 28px;
+	color: #fff;
+	font-family: 'Montserrat', sans-serif;
+	font-weight:bold;
+	}
+
+.contaner11 {
+	height: 30%;
+}
+
+
