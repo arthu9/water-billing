@@ -1,0 +1,27 @@
+body {
+  background-image: url("images/water.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+
+.jumbotron {
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 20px;
+  background: white;
+}
+
+.column {
+  padding-left: 5%;
+  padding-right: 15%;
+}
+
+.column-item {
+  margin-bottom: 10px;
+}
+
+.dashboard-table {
+  margin-right: 15%;
+  margin-left: 15%;
+}

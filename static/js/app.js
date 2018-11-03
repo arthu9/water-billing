@@ -23,30 +23,6 @@ function login(user,pass) {
     });
 }
 
-function validate() {
-    const user = $('input#user1').val();
-    $.ajax
-    ({
-        url: "http://localhost:8080/validate",
-        contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify({
-            'username': user
-        }),
-        type: "POST",
-        dataType: "json",
-        error: function (e) {
-        },
-        success: function (resp) {
-            if (resp.status === 'exist'){
-                console.log("Username is currently in use");
-            }
-            else {
-                console.log("Username is available");
-            }
-        }
-    });
-}
-
 $(document).on('keypress', '#pass1', function(e) {
     if (e.keyCode === 13) {
         $('button#mylogin').click();
