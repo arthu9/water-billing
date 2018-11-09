@@ -1,5 +1,6 @@
 /*Google Fonts*/
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500,600,700');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700');
 
@@ -142,26 +143,26 @@ i.box-circle-solid{
 	z-index: -1;
 }
 .bg-right{
-	background:url("static/img/gray.jpg");
+	background:url("../image/gray.jpg");
 	background-repeat: no-repeat;
 	background-position: top right;
 }
 /*.sec-bg-02{
 	background:url("https://grafreez.com/wp-content/temp_demos/razor/img/sec-bg-02.jpg");
 	background-repeat: no-repeat;
-	background-position: top left;	
+	background-position: top left;
 	background-size: cover;
 }
 .sec-bg-03{
 	background:url("https://grafreez.com/wp-content/temp_demos/razor/img/sec-bg-03.jpg");
 	background-repeat: no-repeat;
-	background-position: top left;	
+	background-position: top left;
 	background-size: cover;
 }
 .sec-bg-04{
 	background:url("https://grafreez.com/wp-content/temp_demos/razor/img/sec-bg-04.jpg");
 	background-repeat: no-repeat;
-	background-position: top left;	
+	background-position: top left;
 	background-size: cover;
 }*/
 .parallax{
@@ -285,7 +286,8 @@ i.box-circle-solid{
 	height: 60%;
 }
 .intro-bg{
-	background:url("img/1.jpg");
+	/*background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);*/
+	background-image: url("../image/019 Malibu Beach.png");
 	background-repeat:no-repeat;
 	background-position: center center;
 	background-size:cover;
@@ -300,7 +302,7 @@ i.box-circle-solid{
 }
 .intro h1{
 	font-weight: 700;
-	font-family: 'Abril Fatface', cursive;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 3.0rem;
 }
 .intro-caption .btn i{
@@ -508,17 +510,17 @@ i.box-circle-solid{
 	text-transform: capitalize;
 }
 .member-box{
-  width:100%
+  width:100%;
   float:left;
   position:relative;
   overflow:hidden
 }
 .member-box:hover> img{
 transform: scale(1.05);
-transition:1s ease-in;  
+transition:1s ease-in;
 }
 .member-box img{
-  transition:0.3s ease-in;  
+  transition:0.3s ease-in;
 }
 .member-box.t-bottom .overlay-content{
 	display:flex;
@@ -718,7 +720,7 @@ ul.social-box li {
 	color: #5CB85C;
 }
 .faq-box .card{
-	border-color: #35CBDF;	
+	border-color: #35CBDF;
 	margin-top: 10px;
 }
 .faq-box .card-header{
@@ -857,4 +859,23 @@ h4{
 .form-control{
 	border-radius: 0px;
 	margin-bottom: 10px;
+}
+
+    button:focus {
+    outline: 0;
+}
+
+.navbar .dropdown-menu .form-control {
+    width: 200px;
+}
+
+#navbarnoti{
+	padding-bottom: 9.5px;
+	position: absolute;
+	z-index: 10000;
+}
+
+#test1 {
+    display:inline-block;
+    float:none;
 }

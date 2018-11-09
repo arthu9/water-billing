@@ -2,52 +2,62 @@
 <html>
 <head>
   <title>Page Title</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <script src="../static/js/jquery-3.3.1.min.js"></script>
+  <script src="../static/js/bootstrap.bundle.min.js"></script>
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  
-  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <!-- Sign-up -->
-  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <!-- navbar -->
-  <link rel="stylesheet" href="static/css/navbarbootstrap.min.css">
-  <!-- <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
-  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
- 
- </head>
+</head>
+
+<nav id="navbarnoti" hidden class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+    <div class="container col-lg-12" style="text-align: center">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-4" style="margin-top: 6px">
+            <h5 id="test1" class=""> Invalid Registration Key!</h5>
+        </div>
+        <div class="col-lg-4">
+        </div>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
+    <div class="container">
+        <a class="navbar-brand" href="#">WaterBilling</a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+        </button>
+        <div class="collapse navbar-collapse" id="exCollapsingNavbar">
+            <ul class="nav navbar-nav">
+                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+            </ul>
+            <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+                <li class="dropdown order-lg-5">
+                    <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-success dropdown-toggle">Login <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right mt-1">
+                      <li class="p-1">
+                            <form class="form" action="javascript:login();">
+                                <div class="form-group">
+                                    <input id="username" placeholder="Username" class="form-control" type="text" required>
+                                </div>
+                                <div class="form-group">
+                                    <input id="password" placeholder="Password" class="form-control" type="password" required>
+                                      <small id="credentials" hidden class="text-danger"> Invalid Credentials </small>
+                                </div>
+                                <div class="form-group">
+                                    <button id="loginButton" type="submit" class="btn btn-primary btn-block">Login <i id="load" class=""></i></button>
+                                </div>
+                                <div class="form-group text-xs-center">
+                                    <small><a href="#">Forgot password?</a></small>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 <body>
-  <header>
-    <div class="hello">
-    <!-- <div class="navbar navbar-default navbar-fixed-top">  -->
-    <div class="container1">
-        <div class="navbar-header">
-            <a class="brand" href="#">Water Billing</a>
-        </div>
-        <!-- <center> -->
-            <div class="navbar-collapse collapse" id="navbar-main">
-                <form class="navbar-form navbar-right" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="username" placeholder="Username">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="password" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-default">Log In</button>
-                </form>
-            </div>
-          <!-- </center> -->
-          </div>
-        </div>
-  </header>
 
   <section id="home" class="intro intro-bg bg-overlay parallax">
     <div class="container">
@@ -56,113 +66,54 @@
   <!-- <div class="col-md-2"></div> -->
   <div class="col-md-6">
     <div class="intro-caption mt-5">
-      <h1 class="text-white mb-2">Bayad na mo'g tubig bes</h1>
+      <h1 class="text-white mb-2">Welcome to WaterBilling</h1>
       <span class="glyphicon glyphicon-envelope"></span><p class="text-white mb-4"> Sign up to automation billing and receive your bills online. Help save the environment by paper billing. </p>
       <span class="glyphicon glyphicon-search"></span><p class="text-white mb-4"> Easy Access.</p>
-       <span class="glyphicon glyphicon-qrcode"><p class="text-white mb-4"> Sign up to automation billing and receive your bills online. Help save the environment by paper billing. </p>
-      <!-- <a class="btn btn-primary text-white mr-8" href="register.html">Create an Account</a> -->
+        <span class="glyphicon glyphicon-qrcode"></span><p class="text-white mb-4"> Sign up to automation billing and receive your bills online. Help save the environment by paper billing. </p>
     </div>
   </div>
 
 
   <!-- SignUp -->
-  <div class="container11 col-md-6" id="wrap">
-    <!-- <div class="container11 col-md-6" id="wrap"> -->
-    <!-- <div class="row"> -->
-      <!-- <div class="col-md-6 col-md-offset-3"> -->
-        <form action="r" method="post" accept-charset="utf-8" class="form col-md-12" role="form">   
-          <legend>Sign Up</legend>
-          <h4>It's free and always will be.</h4>
-            <div class="row">
+  <div class="container-fluid rounded col-md-6" id="wrap" style="background-color: ghostwhite;">
+        <form action="javascript:register();" class="col-md-12 container-fluid"  style="margin-top: 15px; margin-bottom: 15px; background-color: honeydew" role="form">
+          <legend>Sign Up in WaterBilling</legend>
+            <div class="form-row">
                 <div class="col-xs-6 col-md-6">
-                  <input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name"  />        
+                  <input id="firstname" type="text" name="firstname" value="" class="form-control form-control-lg" placeholder="First Name" required/>
                 </div>
                 <div class="col-xs-6 col-md-6">
-                  <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name"  />
+                  <input id="lastname" type="text" name="lastname" value="" class="form-control form-control-lg" placeholder="Last Name" required/>
                 </div>
             </div>
-        <input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email"  />
-        <input type="password" name="password" value="" class="form-control input-lg" placeholder="Password"  />
-        <input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"  /> 
-        <label>Birth Date</label>                    
-        <div class="row">
-            <div class="col-xs-4 col-md-4">
-            <select name="month" class = "form-control input-lg">
-              <option value="01">Jan</option>
-              <option value="02">Feb</option>
-              <option value="03">Mar</option>
-              <option value="04">Apr</option>
-              <option value="05">May</option>
-              <option value="06">Jun</option>
-              <option value="07">Jul</option>
-              <option value="08">Aug</option>
-              <option value="09">Sep</option>
-              <option value="10">Oct</option>
-              <option value="11">Nov</option>
-              <option value="12">Dec</option>
-              </select>                        
-            </div>
-            <div class="col-xs-4 col-md-4">
-            <select name="day" class = "form-control input-lg">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select> 
-            </div>
-            <div class="col-xs-4 col-md-4">
-            <select name="year" class = "form-control input-lg">
-              <option value="1935">1935</option>
-              <option value="1936">1936</option>
-              <option value="1937">1937</option>
-              <option value="1938">1938</option>
-              <option value="1939">1939</option>
-              <option value="1940">1940</option>
-              <option value="1941">1941</option>
-              <option value="1942">1942</option>
-              <option value="1943">1943</option>
-              <option value="1944">1944</option>
-              <option value="1945">1945</option>
-              <option value="1946">1946</option>
-              <option value="1947">1947</option>
-              <option value="1948">1948</option>
-              <option value="1949">1949</option>
-              <option value="1950">1950</option>
-            </select>  
-            </div>
+      <div class="input-group" style="margin-bottom: 10px">
+        <div class="input-group-prepend" style="width: 40px">
+          <span class="input-group-text" style="width: 40px" id="span_username" >
+              <div hidden id="spinner" class="fa fa-circle-o-notch fa-spin"></div>
+          </span>
+
         </div>
-                    
-        <label>Gender : </label>                    
-        <label class="radio-inline">
-            <input type="radio" name="gender" value="M" id=male />                        Male
-        </label>
-        <label class="radio-inline">
-            <input type="radio" name="gender" value="F" id=female />                        Female
-        </label>
-        <br />
-        <span class="help-block">By clicking Create my account, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.</span>
-        
-        <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">Create my account</button>
-    </form>          
+        <input id="rusername" type="text"  style="margin-bottom: 0px" class="form-control" placeholder="Username" aria-describedby="inputGroupPrepend3" required>
+        <div id="in_use"style="margin-bottom: 0px; margin-top: 0px;" hidden class="invalid-feedback">
+        Username in used.
+        </div>
+        </div>
+
+        <input id="rpassword" type="password" style="margin-top: 0px;" name="password" value="" class="form-control" placeholder="Password" required />
+        <input id="address" type="text" name="address" value="" class="form-control" placeholder="Address" required />
+        <input id="regkey" type="text" name="regcode" value="" class="form-control" placeholder="Registration Code" required />
+        <input id="mobile" type="text" name="number" value="" class="form-control" placeholder="Mobile Number" required />
+
+        <button id="registerButton" class="btn btn-lg btn-success btn-block signup-btn " type="submit">Register
+        <div id="registrationSpinner" class=""></div></button>
+    </form>
   </div>
-<!-- </div>             -->
 </div>
-</div> 
-    </div>
-  </section>
+</div>
+</section>
 
+<script src="../static/js/app.js"></script>
 
-
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-<!-- <h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
- -->
 </body>
 </html>
+

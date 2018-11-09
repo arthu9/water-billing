@@ -10,6 +10,43 @@ app.secret_key = 'celeron0912'
 def index():
     return render_template("index.html")
 
+@app.route('/login', methods=['POST'])
+def login():
+    params = request.get_json()
+    username = params["username"]
+    password = params["password"]
+    headers = {'content-type': 'application/json; charset=utf-8', 'dataType': "json"}
+    resp = requests.post("http://localhost:8080/login", headers=headers, json={'username': username, 'password': password})
+    data = resp.json()
+    if "error" in data['status']:
+        return jsonify(resp.json())
+    else:
+        session['user'] = data['status']
+        return jsonify(resp.json())
+
+@app.route('/register', methods=['POST'])
+def register():
+    params = request.get_json()
+    firstname = params["firstname"]
+    lastname = params["lastname"]
+    rusername = params["rusername"]
+    password = params["password"]
+    address = params["address"]
+    reg_key = params["regkey"]
+    mobile = params["mobile"]
+
+    headers = {'content-type': 'application/json; charset=utf-8', 'dataType': "json"}
+    resp = requests.post("http://localhost:8080/register", headers=headers, json={'firstname': firstname, 'lastname': lastname,
+                                                                               'username': rusername, 'password': password,
+                                                                               'address': address, 'reg_key': reg_key,
+                                                                               'number': mobile})
+    data = resp.json()
+    if "error" in data['status']:
+        return jsonify(resp.json())
+    else:
+        session['user'] = data['user']
+        return jsonify(resp.json())
+
 @app.after_request
 def add_cors(resp):
     resp.headers['Access-Control-Allow-Origin'] = flask.request.headers.get(
