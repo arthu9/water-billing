@@ -8,7 +8,7 @@ app.secret_key = 'celeron0912'
 
 @app.route('/')
 def index():
-    return render_template("homepage_consumer.html")
+    return render_template("homepage_admin.html")
 
 @app.after_request
 def add_cors(resp):

@@ -1,0 +1,15 @@
+.form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.dashboard-table{
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 3%;
+}
