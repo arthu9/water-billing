@@ -14,6 +14,10 @@ def admin_dash():
 def consumer_dash():
     return render_template("homepage_consumer.html")
 
+@app.route('/addbill')
+def admin_addbill():
+    return render_template("homepage_consumer.html")
+
 @app.after_request
 def add_cors(resp):
     resp.headers['Access-Control-Allow-Origin'] = flask.request.headers.get(
