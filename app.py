@@ -6,9 +6,13 @@ app = Flask(__name__)
 app.secret_key = 'celeron0912'
 # app.config['SESSION_TYPE'] = 'filesystem'
 
-@app.route('/')
-def index():
+@app.route('/administrator')
+def admin_dash():
     return render_template("homepage_admin.html")
+
+@app.route('/dashboard')
+def consumer_dash():
+    return render_template("homepage_consumer.html")
 
 @app.after_request
 def add_cors(resp):
@@ -27,4 +31,4 @@ def add_cors(resp):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+app.run(debug=True)
