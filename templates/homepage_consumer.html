@@ -13,16 +13,16 @@
     <link href="../static/tabulator/dist/css/tabulator_site.min.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS-->
-    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template-->
-    <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../static/css2/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
     <!-- Page level plugin CSS-->
-    <link href="static/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="../static/css/dataTables.bootstrap4.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="static/css/sb-admin.css" rel="stylesheet">
+    <link href="../static/css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
 
 
@@ -92,42 +92,28 @@
         </div>
 
         <div class="jumbotron">
-          <CENTER><strong><h1> Bill Information</h1></strong></CENTER>
-          <div class="row">
-            <div class="column">
-              <h5>
+          <center><strong><h3> Bill Information</h3></strong></center>
+          <div class="row col-lg-12">
+            <div class=" col-md-8">
                 <div class="column-item">
-                  Month's Bill: January 2019
+                    <b>Month:</b> <span id="month"></span>
                 </div> 
                 <div class="column-item">
-                  Date Issued: February 3, 2019
+                    <b>Issued:</b> <span id="due"></span>
                 </div>
                 <div class="column-item">
-                  Reading: 30928
+                     <b>Reading:</b> <span id="reading"></span>
                 </div>
                 <div class="column-item">
-                  Cubic Meter Used: 3
+                     <b>Cubic Meter Used:</b> <span id="cubicM"></span>
                 </div>
-              </h5>
             </div>
-            <div class="column">
-              <h5>
+            <div class="col-md-4">
                 <div class="column-item">
-                  Rate:     12.49
+                  <b>Total Amount:</b> <span id="amount"></span>
                 </div>
-                <div class="column-item">
-                  Arrears/Advance:    100.69
-                </div>
-                <div class="column-item">
-                  Penalty:      5.98
-                </div>
-                <div class="column-item">
-                  Total Due:      10000.68
-                </div>
-              </h5>
             </div>
           </div>
-
         </div>
 
 
@@ -141,30 +127,22 @@
 
 
 
-    <script src="static/vendor/jquery/jquery.min.js"></script>
-    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Page level plugin JavaScript-->
-    <script src="static/vendor/chart.js/Chart.min.js"></script>
-    <script src="static/vendor/datatables/jquery.dataTables.js"></script>
-    <script src="static/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="../static/js/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="static/js/sb-admin.min.js"></script>
+    <script src="../static/js/sb-admin.min.js"></script>
 
     <!--Tabulator extensions CSS-->
     <script type="text/javascript" src="../static/tabulator/dist/js/tabulator.min.js"></script>
-
-    <!-- Demo scripts for this page-->
-    <script src="static/js/demo/datatables-demo.js"></script>
-    <script src="static/js/demo/chart-area-demo.js"></script>
+    <script type="text/javascript" src="../static/js/moment.js"></script>
 
 </body>
 
 
-<script src="static/js/homepage_consumer_dashboard_table.js"></script>
+<script src="../static/js/homepage_consumer_dashboard_table.js"></script>
 
 </html>

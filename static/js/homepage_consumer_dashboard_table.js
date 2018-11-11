@@ -1,5 +1,5 @@
-var table = new Tabulator("#dashboard-table", {
-        height:500, 
+/*var table = new Tabulator("#dashboard-table", {
+        height:311,
         responsiveLayout:"hide", 
         layout:"fitColumns",
         columns:[
@@ -7,7 +7,6 @@ var table = new Tabulator("#dashboard-table", {
             title:"MONTH",
             field:"month", 
             align:"center",
-            width:700,
             sorter:"date"
           },
           {
@@ -87,9 +86,26 @@ var table = new Tabulator("#dashboard-table", {
           month: "August 2018",
           date: "September 15,2018"
         },
+      ];*/
 
+var table = new Tabulator("#dashboard-table", {
+        ajaxResponse:function(url, params, response){
+        return response.entries;
+    },
+ 	height:311, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+ 	layout:"fitColumns", //fit columns to width of table (optional)
+ 	columns:[ //Define Table Columns
+	 	{title:"Date (Month/Day/Year)", field:"date", align:"center", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}},
+	 	{title:"Due (Month/Day/Year)", field:"due_date", align:"center", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}},
+ 	],
+ 	rowClick:function(e, row){ //trigger an alert message when the row is clicked
+          $('span#month').text(moment(row.getData().date, 'MM-DD-YYYY').format('MMMM DD[,] YYYY'));
+          $('span#due').text(moment(row.getData().due_date, 'MM-DD-YYYY').format('MMMM DD[,] YYYY'));
+          $('span#reading').text(row.getData().reading);
+          $('span#cubicM').text(row.getData().cubic_meters);
+          $('span#amount').text('₱'+row.getData().amount);
 
+ 	},
+    });
 
-      ]
-
-      table.setData(tabledata);
+      table.setData('http://localhost:8080/bill/1');
