@@ -25,9 +25,8 @@
 
     <!-- Custom styles for this template-->
     <link href="../static/css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../static/css/homepage_admin.css">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <!--Datepicker-->
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
   </head>
 
@@ -79,43 +78,32 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Add Monthly Bill</span></a>
         </li>
-          <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Payment</span></a>
-        </li>
       </ul>
 
       <div id="content-wrapper">
 
         <div class="container-fluid">
 
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-12 col-md-10 col-lg-8">
-                <form class="card card-sm" action="javascript:search();">
-                  <div class="card-body row no-gutters align-items-center">
-                    <div class="col-auto">
-                      <i class="fas fa-search h4 text-body"></i>
-                    </div>
-                    <!--end of col-->
-                    <div class="col">
-                      <input id="testme1" class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search Person">
-                    </div>
-                    <!--end of col-->
-                    <div class="col-auto">
-                      <button id="tester" class="btn btn-lg btn-success" type="submit">Search</button>
-                    </div>
-                    <!--end of col-->
-                  </div>
-                </form>
-              </div>
-              <!--end of col-->
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active">Add Bills</li>
+          </ol>
+
+          <!-- Page Content -->
+            <div class="row col-lg-12">
+                <span style="margin-left: 20px; margin-right: 10px;">Date:</span>
+                <input disabled id="datepicker" width="276" />
+                <span style="margin-left: 20px; margin-right: 10px;">Due-Date:</span>
+                <input disabled id="datepicker2" width="276" />
+                <span style="margin-left: 20px; margin-right: 10px;">Rate:</span>
+                <input id="cur_rate" type="text" class="form-control col-3"/>
             </div>
-          </div>
+          <div class="col-lg-8" style="margin-top: 10px" id="example-table"></div>
 
-          <div id="memberTable" class="dashboard-table"></div>
-
+           <ol class="breadcrumb" style="margin-top: 20px">
+            <li class="breadcrumb-item active">Unpaid Bills</li>
+          </ol>
+          <div id="example-table1"></div>
         </div>
         <!-- /.container-fluid -->
 
@@ -152,7 +140,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="{{ url_for('.logout') }}" style="cursor: pointer">Logout</a>
+            <a class="btn btn-primary" href="{{ url_for('.logout') }}">Logout</a>
           </div>
         </div>
       </div>
@@ -172,6 +160,7 @@
     <script type="text/javascript" src="../static/tabulator/dist/js/tabulator.min.js"></script>
     <!--<script type="text/javascript" src="../static/tabulator/dist/js/modules/format.min.js"></script>-->
     <script type="text/javascript" src="../static/js/moment.js"></script>
-    <script src="../static/js/homepage_admin_dashboard_table.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
+    <script src="../static/js/admin_app.js" type="text/javascript"></script>
   </body>
 </html>
