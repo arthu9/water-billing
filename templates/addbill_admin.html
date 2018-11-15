@@ -47,7 +47,7 @@
       <!-- Navbar -->
       <ul class="navbar-nav ml-auto ml-md-4">
           <li class="nav-item dropdown no-arrow" style="margin-top: 10px; color: white">
-            <h6>Welcome, Alex Mendoza </h6>
+            <h6>Welcome, {{ firstname }} {{ lastname }} </h6>
             </li>
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -86,15 +86,15 @@
 
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
-            <li class="breadcrumb-item active">Latest Added Bills</li>
+            <li class="breadcrumb-item active">Add Bills</li>
           </ol>
 
           <!-- Page Content -->
             <div class="row col-lg-12">
                 <span style="margin-left: 20px; margin-right: 10px;">Date:</span>
-                <input id="datepicker" width="276" />
+                <input disabled id="datepicker" width="276" />
                 <span style="margin-left: 20px; margin-right: 10px;">Due-Date:</span>
-                <input id="datepicker2" width="276" />
+                <input disabled id="datepicker2" width="276" />
                 <span style="margin-left: 20px; margin-right: 10px;">Rate:</span>
                 <input id="cur_rate" type="text" class="form-control col-3"/>
             </div>
@@ -140,7 +140,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="">Logout</a>
+            <a class="btn btn-primary" href="{{ url_for('.logout') }}">Logout</a>
           </div>
         </div>
       </div>

@@ -104,8 +104,25 @@ var table = new Tabulator("#dashboard-table", {
           $('span#reading').text(row.getData().reading);
           $('span#cubicM').text(row.getData().cubic_meters);
           $('span#amount').text('₱'+row.getData().amount);
+          console.log(row.getData().status);
+          if (row.getData().status === 'Unpaid'){
+              $('span#warnings').remove();
+              $('span#stat').append("<span id='warnings' class='text-warning'>"+row.getData().status+"</span>");
+          }
+          else if (row.getData().status === 'Paid'){
+              $('span#warnings').remove();
+              $('span#stat').append("<span id='warnings' class='text-success'>"+row.getData().status+"</span>");
+          }
+          else if(row.getData().status === 'Disconnection') {
+              $('span#warnings').remove();
+              $('span#stat').append("<span id='warnings' class='text-danger'>"+row.getData().status+"</span>");
+          }
+          else{
+              $('span#warnings').remove();
+              console.log("not set")
+          }
+
 
  	},
     });
-
-      table.setData('http://localhost:8080/bill/1');
+      table.setData('http://localhost:8080/bill/'+curuser);

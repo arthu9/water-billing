@@ -68,7 +68,7 @@ function call_ajax(cur_date,due_date,cur_rate,table_val,user_id){
             },
             success: function (resp) {
                 if (resp.status === 'ok'){
-                    console.log('Added')
+                    alert("Successfully Added!");
                 }
                 else {
                     console.log("Error"+resp.message);
