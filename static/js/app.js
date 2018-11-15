@@ -6,6 +6,7 @@ $( document ).ready(function() {
 function login() {
     const username = $('input#username').val();
     const password = $('input#password').val();
+    console.log('was here');
     $.ajax
     ({
         url: "http://127.0.0.1:5000/login",
@@ -27,12 +28,12 @@ function login() {
         error: function (e) {
         },
         success: function (resp) {
+            console.log('was here');
             if (resp.status === 'error'){
                 $("#credentials").attr("hidden", false)
             }
             else {
-                // window.location.replace('/dashboard');
-                console.log("NEXT PAGE, success"+resp.status);
+                window.location.replace('/dashboard')
             }
         }
     });
@@ -82,8 +83,7 @@ function register(){
                 }
             }
             else {
-                // window.location.replace('/dashboard');
-                console.log("NEXT PAGE, success"+resp.status);
+                 window.location.replace('/dashboard');
             }
         }
     });
