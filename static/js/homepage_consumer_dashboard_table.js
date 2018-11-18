@@ -5,8 +5,8 @@ var table = new Tabulator("#dashboard-table", {
  	height:311, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
  	layout:"fitColumns", //fit columns to width of table (optional)
  	columns:[ //Define Table Columns
-	 	{title:"Date (Month/Day/Year)", field:"date", align:"center", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}},
-	 	{title:"Due (Month/Day/Year)", field:"due_date", align:"center", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}},
+	 	{title:"Date Issued", field:"date", align:"center", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}, formatter:"datetime", formatterParams:{inputFormat:"MM/DD/YYYY", outputFormat:"MMMM DD[,] YYYY"}},
+	 	{title:"Due Date ", field:"due_date", align:"center", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}, formatter:"datetime", formatterParams:{inputFormat:"MM/DD/YYYY", outputFormat:"MMMM DD[,] YYYY"}},
  	],
     rowClick: function (e, row) { //trigger an alert message when the row is clicked
         $('span#month').text(moment(row.getData().date, 'MM-DD-YYYY').format('MMMM DD[,] YYYY'));

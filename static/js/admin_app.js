@@ -1,5 +1,6 @@
 var printIcon = function (cell, formatterParams, onRendered) { //plain text value
-    return '<button id="forsubmit" data-toggle="popover" type="button" class="btn btn-primary">Submit</button>';
+    cur_id = cell.getRow().getData().id;
+    return '<button id="dis_'+cur_id+'" data-toggle="popover" type="button" class="btn btn-primary">Submit</button>';
 };
 
 var table = new Tabulator("#example-table", {
@@ -7,15 +8,16 @@ var table = new Tabulator("#example-table", {
         return response.entries;
     },
     height: 311, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
-    width: 50,
     responsiveLayout: "hide",
     layout: "fitColumns", //fit columns to width of table (optional)
     columns: [ //Define Table Columns
         {title: "Lastname", field: "lastname", width: 180},
         {title: "Firstame", field: "firstname", width: 180},
-        {title: "Curret Reading", field: "cur_reading", width: 180, sorter: "number", align: "center", editor: "input"},
+        {title: "Date Issued", field: "issued", width: 180, sorter:"date", sorterParams:{format:"MM/DD/YYYY"}, formatter:"datetime", formatterParams:{inputFormat:"MM/DD/YYYY", outputFormat:"MMMM DD[,] YYYY"}},
+        {title: "Previous Reading", field: "prev_reading", width: 180},
+        {title: "New Reading", field: "cur_reading", width:180, sorter: "number", align: "center", editor: "input"},
         {
-            formatter: printIcon, width: 100, align: "center", cellClick: function (e, cell) {
+            formatter: printIcon, width: 150, align: "center", cellClick: function (e, cell) {
                 var cur_date = $('input#datepicker').val();
                 var due_date = $('input#datepicker2').val();
                 var cur_rate = $('input#cur_rate').val();
@@ -42,6 +44,7 @@ var table = new Tabulator("#example-table", {
                                 alert("Invalid Input");
                             }
                             else {
+                                $('button#dis_'+user_id).attr("disabled",true);
                                 call_ajax(cur_date, due_date, cur_rate, table_val, user_id);
                             }
                         }
@@ -78,6 +81,10 @@ function call_ajax(cur_date, due_date, cur_rate, table_val, user_id) {
             }
         }
     });
+}
+
+function cellbutton(id){
+    $("dis_"+id).prop("disabled",true);
 }
 
 table.setData('http://localhost:8080/users');

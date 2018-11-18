@@ -71,7 +71,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ url_for('.bill_month') }}">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Bills</span>
             </a>
@@ -99,7 +99,7 @@
                 </h3>
             </strong></center>
             <div class="row col-lg-12">
-                <div class=" col-md-8">
+                <div class=" col-md-7">
                     <div class="column-item">
                         <b>Month:</b> <span id="month"></span>
                     </div>
@@ -113,7 +113,7 @@
                         <b>Cubic Meter Used:</b> <span id="cubicM"></span>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <div class="column-item">
                         <b>Total Amount:</b> <span id="amount"></span>
                     </div>

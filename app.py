@@ -1,4 +1,4 @@
-import flask
+import flask, sys, os
 import requests
 from flask import Flask, jsonify, request, session, render_template, url_for, redirect
 
@@ -32,6 +32,14 @@ def consumer_dash():
     else:
         return redirect(url_for('admin_dash', firstname=str(session['firstname']), lastname=str(session['lastname'])))
 
+@app.route('/billmonth')
+def bill_month():
+    if session.get('user') == None:
+        return render_template('index.html')
+    else:
+        resp2 = requests.get("http://localhost:8080/bill/user/" + session['user'])
+        cur_user = resp2.json()
+        return render_template('latestbill_consumer.html', b_info=cur_user['entries'],firstname=str(session['firstname']), lastname=str(session['lastname']))
 
 @app.route('/addbill')
 def admin_addbill():
