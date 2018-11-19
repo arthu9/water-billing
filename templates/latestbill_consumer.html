@@ -92,38 +92,46 @@
             </ol>
         </div>
 
-        <div class="jumbotron rounded">
-            <center><strong><h3><table class="table"> Bill Information</table></h3></strong></center>
+        <div class="jumbotron bg-dark text-white rounded">
+            <center><strong>
+                <h3>
+                    <table class="table">This Month's Bill Information</table>
+                </h3>
+            </strong></center>
             <div class="row col-lg-12">
                 <div class=" col-md-8">
+                    {% for i in b_info %}
                     <div class="column-item">
-                        <b>Month:</b> <span id="month"></span>
-                    </div> 
-                    <div class="column-item">
-                        <b>Due Date:</b> <span id="due"></span>
+                        <b>Month: </b>{{ i.date }}
                     </div>
                     <div class="column-item">
-                         <b>Reading:</b> <span id="reading"></span>
+                        <b>Due Date: </b> {{ i.due_date }}
                     </div>
                     <div class="column-item">
-                         <b>Cubic Meter Used:</b> <span id="cubicM"></span>
+                        <b>Reading: </b> {{ i.reading }}
+                    </div>
+                    <div class="column-item">
+                        <b>Cubic Meter Used: </b> {{ i.cubic_meters}}
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="column-item">
-                        <b>Total Amount:</b> <span id="amount"></span>
+                        <b>Total Amount: </b>₱{{ i.amount }}
                     </div>
                     <div class="column-item">
-                        <b>Status:</b> <span id="stat"></span>
+                    <b>Status: </b>
+                        {% if i.status == 'Paid' %}
+                        <span id='warnings' class='text-success'>{{ i.status }}</span>
+                        {% elif i.status == 'Unpaid' %}
+                        <span id='warnings' class='text-warning'>{{ i.status }}</span>
+                        {% else %}
+                        <span id='warnings' class='text-danger'>{{ i.status }}</span>
+                        {% endif %}
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-
-        <div class="col-lg-12">
-            <div id="dashboard-table" style="margin: auto;" class=" rounded table table-dark w-75 col-lg-pull-6"></div>
-        </div>
-
     </div>
 </div>
 <!-- Logout Modal-->

@@ -1,6 +1,6 @@
-$( document ).ready(function() {
+$(document).ready(function () {
     $("nav#navbarnoti").hide();
-    $("nav#navbarnoti").attr('hidden',false);
+    $("nav#navbarnoti").attr('hidden', false);
 });
 
 function login() {
@@ -16,11 +16,11 @@ function login() {
         }),
         type: "POST",
         dataType: "json",
-        beforeSend: function(){
+        beforeSend: function () {
             $("i#load").addClass("fa fa-circle-o-notch fa-spin");
             $("button#loginButton").attr("disabled", true)
         },
-        complete: function(){
+        complete: function () {
             $("i#load").removeClass("fa fa-circle-o-notch fa-spin");
             $("button#loginButton").attr("disabled", false)
         },
@@ -39,7 +39,7 @@ function login() {
     });
 }
 
-function register(){
+function register() {
     const firstname = $('input#firstname').val();
     const lastname = $('input#lastname').val();
     const rusername = $('input#rusername').val();
@@ -47,7 +47,7 @@ function register(){
     const address = $('input#address').val();
     const regkey = $('input#regkey').val();
     const mobile = $('input#mobile').val();
-     $.ajax
+    $.ajax
     ({
         url: "http://127.0.0.1:5000/register",
         contentType: 'application/json; charset=utf-8',
@@ -62,94 +62,84 @@ function register(){
         }),
         type: "POST",
         dataType: "json",
-        beforeSend: function(){
+        beforeSend: function () {
             $("div#registrationSpinner").addClass("fa fa-circle-o-notch fa-spin");
             $("button#registerButton").attr("disabled", true)
         },
-        complete: function(){
+        complete: function () {
             $("div#registrationSpinner").removeClass("fa fa-circle-o-notch fa-spin");
             $("button#registerButton").attr("disabled", false)
         },
         error: function (e) {
         },
         success: function (resp) {
-            if (resp.status === 'error'){
-                if (resp.reason === 'Invalid Registration Key'){
+            if (resp.status === 'error') {
+                if (resp.reason === 'Invalid Registration Key') {
                     $("input#regkey").addClass("is-invalid");
                     $("nav#navbarnoti").slideDown(1000);
-                        setTimeout(function(){
+                    setTimeout(function () {
                         $("nav#navbarnoti").slideUp(1000);
-                        },4000)
+                    }, 4000)
                 }
             }
             else {
-                 window.location.replace('/dashboard');
+                window.location.replace('/dashboard');
             }
         }
     });
 }
 
-function validate(){
-     const input_username = $('input#rusername').val();
-     if (input_username === ""){
-         $("button#registerButton").attr("disabled", false);
-         $("input#rusername").removeClass("is-valid");
-         $("input#rusername").removeClass("is-invalid");
-     }
-     else {
-         $.ajax
-         ({
-             url: "http://localhost:8080/validate",
-             contentType: 'application/json; charset=utf-8',
-             type: "POST",
-             data: JSON.stringify({
-                 'username': input_username
-             }),
-             dataType: "json",
-             beforeSend: function () {
-                 // $("span#span_username").text("");
-                 $("div#spinner").attr("hidden", false);
-                 $("button#registerButton").attr("disabled", true);
-             },
-             complete: function () {
-                 // $("span#span_username").text("@");
-                 $("div#spinner").attr("hidden", true);
-             },
-             error: function (e) {
-             },
-             success: function (resp) {
-                 if (resp.status === 'error') {
-                     $("div#in_use").attr("hidden", false);
-                     $("input#rusername").removeClass("is-valid");
-                     $("input#rusername").addClass("is-invalid");
-                     $("button#registerButton").attr("disabled", true);
-                 }
-                 else {
-                     $("div#in_use").attr("hidden", true);
-                     $("input#rusername").removeClass("is-invalid");
-                     $("input#rusername").addClass("is-valid");
-                     $("button#registerButton").attr("disabled", false);
-                 }
-             }
-         });
-     }
+function validate() {
+    const input_username = $('input#rusername').val();
+    if (input_username === "") {
+        $("button#registerButton").attr("disabled", false);
+        $("input#rusername").removeClass("is-valid");
+        $("input#rusername").removeClass("is-invalid");
+    }
+    else {
+        $.ajax
+        ({
+            url: "http://localhost:8080/validate",
+            contentType: 'application/json; charset=utf-8',
+            type: "POST",
+            data: JSON.stringify({
+                'username': input_username
+            }),
+            dataType: "json",
+            beforeSend: function () {
+                // $("span#span_username").text("");
+                $("div#spinner").attr("hidden", false);
+                $("button#registerButton").attr("disabled", true);
+            },
+            complete: function () {
+                // $("span#span_username").text("@");
+                $("div#spinner").attr("hidden", true);
+            },
+            error: function (e) {
+            },
+            success: function (resp) {
+                if (resp.status === 'error') {
+                    $("div#in_use").attr("hidden", false);
+                    $("input#rusername").removeClass("is-valid");
+                    $("input#rusername").addClass("is-invalid");
+                    $("button#registerButton").attr("disabled", true);
+                }
+                else {
+                    $("div#in_use").attr("hidden", true);
+                    $("input#rusername").removeClass("is-invalid");
+                    $("input#rusername").addClass("is-valid");
+                    $("button#registerButton").attr("disabled", false);
+                }
+            }
+        });
+    }
 }
+
 var timeout = null;
-$(document).on('keydown', '#rusername', function(){
+$(document).on('keydown', '#rusername', function () {
     clearTimeout(timeout);
     timeout = setTimeout(function () {
         validate();
     }, 300);
 });
 
-// $(document).on('keypress', '#pass1', function(e) {
-//     if (e.keyCode === 13) {
-//         $('button#mylogin').click();
-//     }
-// });
-//
-// $(document).on('click', '#mylogin', function(){
-//     var username = $('input#user1').val();
-//     var password = $('input#pass1').val();
-//     login(username,password);
-// });

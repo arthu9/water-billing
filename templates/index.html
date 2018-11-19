@@ -26,7 +26,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">WaterBilling</a>
-        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+        <button class="navbar-toggler btn-info fa fa-sort-down" style="background: green" type="button"
+                data-toggle="collapse" data-target="#exCollapsingNavbar">
         </button>
         <div class="collapse navbar-collapse" id="exCollapsingNavbar">
             <ul class="nav navbar-nav">
@@ -34,19 +35,23 @@
             </ul>
             <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
                 <li class="dropdown order-lg-5">
-                    <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-success dropdown-toggle">Login <span class="caret"></span></button>
+                    <button type="button" id="dropdownMenu1" data-toggle="dropdown"
+                            class="btn btn-success dropdown-toggle">Login <span class="caret"></span></button>
                     <ul class="dropdown-menu dropdown-menu-right mt-1">
-                      <li class="p-1">
+                        <li class="p-1">
                             <form class="form" action="javascript:login();">
                                 <div class="form-group">
-                                    <input id="username" placeholder="Username" class="form-control" type="text" required>
+                                    <input id="username" placeholder="Username" class="form-control" type="text"
+                                           required>
                                 </div>
                                 <div class="form-group">
-                                    <input id="password" placeholder="Password" class="form-control" type="password" required>
-                                      <small id="credentials" hidden class="text-danger"> Invalid Credentials </small>
+                                    <input id="password" placeholder="Password" class="form-control" type="password"
+                                           required>
+                                    <small id="credentials" hidden class="text-danger"> Invalid Credentials</small>
                                 </div>
                                 <div class="form-group">
-                                    <button id="loginButton" type="submit" class="btn btn-primary btn-block">Login <i id="load" class=""></i></button>
+                                    <button id="loginButton" type="submit" class="btn btn-primary btn-block">Login <i
+                                            id="load" class=""></i></button>
                                 </div>
                                 <div class="form-group text-xs-center">
                                     <small><a href="#">Forgot password?</a></small>
@@ -59,12 +64,6 @@
         </div>
     </div>
 </nav>
-
-
-
-
-
-
 
 <body>
   <section id="home" class="intro intro-bg bg-overlay parallax">
@@ -79,7 +78,6 @@
                 <span class="glyphicon glyphicon-qrcode"></span><p class="text-white mb-4"> Sign up to automation billing and receive your bills online. Help save the environment by paper billing. </p>
             </div>
           </div>
-          <!-- SignUp -->
           <div class="container-fluid rounded col-md-6" id="wrap" style="background-color: ghostwhite;">
             <form action="javascript:register();" class="col-md-12 container-fluid"  style="margin-top: 15px; margin-bottom: 15px; background-color: honeydew" role="form">
               <legend>Sign Up in WaterBilling</legend>
