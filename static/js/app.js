@@ -6,7 +6,6 @@ $(document).ready(function () {
 function login() {
     const username = $('input#username').val();
     const password = $('input#password').val();
-    console.log('was here');
     $.ajax
     ({
         url: "http://127.0.0.1:5000/login",
@@ -26,13 +25,14 @@ function login() {
             $("button#loginButton").attr("disabled", false)
         },
         error: function (e) {
+            console.log(e)
         },
         success: function (resp) {
-            console.log('was here');
-            if (resp.status === 'error') {
+            if (resp.status === 'error'){
                 $("#credentials").attr("hidden", false)
             }
             else {
+                console.log(resp);
                 window.location.replace('/dashboard')
             }
         }

@@ -1,5 +1,5 @@
 body {
-  background: floralwhite;
+  background-image: url('../image/water.jpg');
   /*background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);*/
   background-repeat: no-repeat;
   background-size: 100%;
@@ -9,7 +9,7 @@ body {
   margin-left: 20%;
   margin-right: 20%;
   padding: 20px;
-  background: white;
+  background: #f8f8f8 ;
 }
 
 .column {
@@ -24,4 +24,8 @@ body {
 .dashboard-table {
   margin-right: 15%;
   margin-left: 15%;
+}
+
+.tabulator .tabulator-col-title {
+  text-align: center;
 }
