@@ -10,8 +10,10 @@ app.secret_key = 'celeron0912'
 
 @app.route('/')
 def index():
-    return render_template("index.html")
-
+    if session.get('user') == None:
+        return render_template("index.html")
+    else:
+        return redirect(url_for('consumer_dash'))
 
 @app.route('/administrator')
 def admin_dash():

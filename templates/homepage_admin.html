@@ -82,7 +82,19 @@
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Payment</span></a>
+                <span>Status</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Search Specific</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link nav-item" href="#">
+                <i class="fas fa-fw fa-table"></i>
+                <span id="notif">New Members
+                </span>
+                </a>
         </li>
     </ul>
 
@@ -113,6 +125,10 @@
                 </div>
             </div>
             <div id="memberTable" class="dashboard-table"></div>
+            <ol class="breadcrumb" style="margin-top: 20px">
+                <li class="breadcrumb-item active">User's Bill Information</li>
+            </ol>
+            <div id="displayTable" class="dashboard-table"></div>
         </div>
         <!-- /.container-fluid -->
 
@@ -171,5 +187,27 @@
 <!--<script type="text/javascript" src="../static/tabulator/dist/js/modules/format.min.js"></script>-->
 <script type="text/javascript" src="../static/js/moment.js"></script>
 <script src="../static/js/homepage_admin_dashboard_table.js"></script>
+
+<script>
+    $(document).ready(function () {
+$.ajax
+    ({
+        url: "http://localhost:8080/newusers",
+        type: "GET",
+        dataType: "json",
+        error: function (e) {
+        },
+        success: function (resp) {
+            if (resp.status === 'ok') {
+                $('span#notif').append('<span class="badge badge-pill badge-danger" style="position: sticky;">' +resp.entries[0].numbers+ '</span>');
+            }
+            else {
+                console.log('Error')
+            }
+        }
+    });
+});
+
+</script>
 </body>
 </html>

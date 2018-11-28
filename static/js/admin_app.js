@@ -83,10 +83,6 @@ function call_ajax(cur_date, due_date, cur_rate, table_val, user_id) {
     });
 }
 
-function cellbutton(id){
-    $("dis_"+id).prop("disabled",true);
-}
-
 table.setData('http://localhost:8080/users');
 
 $('#datepicker').datepicker({
