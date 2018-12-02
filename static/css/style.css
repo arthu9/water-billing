@@ -883,3 +883,42 @@ h4{
 	margin: 10%;
 }
 
+/*-------NEW */
+/*signup*/
+.panel-heading {
+    padding: 5px 15px;
+}
+
+.panel-footer {
+	padding: 1px 15px;
+	color: #A0A0A0;
+}
+
+.profile-img {
+	width: 96px;
+	height: 96px;
+	margin-left: 10px;
+	/*margin: 0 auto 10px;*/
+	display: block;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+
+.panel-body {
+	margin-left: 50px;
+}
+.panel-heading {
+	margin-left: 70px;
+}
+
+.center-block {
+	margin-left: 70px;
+	margin-bottom: 20px;
+}
+
+.input::placeholder {
+	padding: 80px;
+}
+
+
