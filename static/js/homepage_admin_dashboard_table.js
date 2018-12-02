@@ -31,8 +31,6 @@ let table2 = new Tabulator("#displayTable", {
     ],
 });
 
-
-
 function search() {
     let search_name = $('input#testme1').val();
     let replaced = search_name.split(' ').join('%');

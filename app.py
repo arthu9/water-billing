@@ -3,6 +3,7 @@ import requests
 from flask import Flask, jsonify, request, session, render_template, url_for, redirect
 
 app = Flask(__name__)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.secret_key = 'celeron0912'
 
 
@@ -14,6 +15,7 @@ def index():
         return render_template("index.html")
     else:
         return redirect(url_for('consumer_dash'))
+
 
 @app.route('/administrator')
 def admin_dash():
@@ -34,6 +36,7 @@ def consumer_dash():
     else:
         return redirect(url_for('admin_dash', firstname=str(session['firstname']), lastname=str(session['lastname'])))
 
+
 @app.route('/billmonth')
 def bill_month():
     if session.get('user') == None:
@@ -41,11 +44,24 @@ def bill_month():
     else:
         resp2 = requests.get("http://localhost:8080/bill/user/" + session['user'])
         cur_user = resp2.json()
-        return render_template('latestbill_consumer.html', b_info=cur_user['entries'],firstname=str(session['firstname']), lastname=str(session['lastname']))
+        return render_template('latestbill_consumer.html', b_info=cur_user['entries'],
+                               firstname=str(session['firstname']), lastname=str(session['lastname']))
+
 
 @app.route('/addbill')
 def admin_addbill():
     return render_template("addbill_admin.html", firstname=str(session['firstname']), lastname=str(session['lastname']))
+
+
+@app.route('/activation/status')
+def activation_status():
+    return render_template("admin_activation_status.html", firstname=str(session['firstname']),
+                           lastname=str(session['lastname']))
+
+
+@app.route('/search/user')
+def search_user():
+    return render_template("search_admin.html", firstname=str(session['firstname']), lastname=str(session['lastname']))
 
 
 @app.route('/logout')
@@ -81,20 +97,15 @@ def login():
 @app.route('/register', methods=['POST'])
 def register():
     params = request.get_json()
-    firstname = params["firstname"]
-    lastname = params["lastname"]
     rusername = params["rusername"]
     password = params["password"]
-    address = params["address"]
     reg_key = params["regkey"]
     mobile = params["mobile"]
 
     headers = {'content-type': 'application/json; charset=utf-8', 'dataType': "json"}
     resp = requests.post("http://localhost:8080/register", headers=headers,
-                         json={'firstname': firstname, 'lastname': lastname,
-                               'username': rusername, 'password': password,
-                               'address': address, 'reg_key': reg_key,
-                               'number': mobile})
+                         json={'username': rusername, 'password': password,
+                               'reg_key': reg_key, 'number': mobile})
     data = resp.json()
     if "error" in data['status']:
         return jsonify(resp.json())
@@ -125,4 +136,4 @@ def add_cors(resp):
 
 
 if __name__ == '__main__':
-        app.run(debug=True)
+    app.run(debug=True)

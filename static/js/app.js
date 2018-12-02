@@ -1,6 +1,8 @@
 $(document).ready(function () {
     $("nav#navbarnoti").hide();
     $("nav#navbarnoti").attr('hidden', false);
+    $("nav#navbarnoti2").hide();
+    $("nav#navbarnoti2").attr('hidden', false);
 });
 
 function login() {
@@ -28,7 +30,7 @@ function login() {
             console.log(e)
         },
         success: function (resp) {
-            if (resp.status === 'error'){
+            if (resp.status === 'error') {
                 $("#credentials").attr("hidden", false)
             }
             else {
@@ -40,11 +42,8 @@ function login() {
 }
 
 function register() {
-    const firstname = $('input#firstname').val();
-    const lastname = $('input#lastname').val();
     const rusername = $('input#rusername').val();
     const password = $('input#rpassword').val();
-    const address = $('input#address').val();
     const regkey = $('input#regkey').val();
     const mobile = $('input#mobile').val();
     $.ajax
@@ -52,11 +51,8 @@ function register() {
         url: "http://127.0.0.1:5000/register",
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify({
-            'firstname': firstname,
-            'lastname': lastname,
             'rusername': rusername,
             'password': password,
-            'address': address,
             'regkey': regkey,
             'mobile': mobile
         }),
@@ -76,6 +72,15 @@ function register() {
             if (resp.status === 'error') {
                 if (resp.reason === 'Invalid Registration Key') {
                     $("input#regkey").addClass("is-invalid");
+                    $("h5#navbartext").text('Invalid Registration Key!');
+                    $("nav#navbarnoti").slideDown(1000);
+                    setTimeout(function () {
+                        $("nav#navbarnoti").slideUp(1000);
+                    }, 4000)
+                }
+                else if (resp.reason === 'used') {
+                    $("input#regkey").addClass("is-invalid");
+                    $("h5#navbartext").text('Key is already used!');
                     $("nav#navbarnoti").slideDown(1000);
                     setTimeout(function () {
                         $("nav#navbarnoti").slideUp(1000);
@@ -99,7 +104,7 @@ function validate() {
     else {
         $.ajax
         ({
-            url: "http://localhost:8080/validate",
+            url: "http://localhost:8080/validate/username",
             contentType: 'application/json; charset=utf-8',
             type: "POST",
             data: JSON.stringify({
@@ -107,12 +112,10 @@ function validate() {
             }),
             dataType: "json",
             beforeSend: function () {
-                // $("span#span_username").text("");
                 $("div#spinner").attr("hidden", false);
                 $("button#registerButton").attr("disabled", true);
             },
             complete: function () {
-                // $("span#span_username").text("@");
                 $("div#spinner").attr("hidden", true);
             },
             error: function (e) {
@@ -134,6 +137,7 @@ function validate() {
         });
     }
 }
+
 
 var timeout = null;
 $(document).on('keydown', '#rusername', function () {

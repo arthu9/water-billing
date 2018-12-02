@@ -2,9 +2,9 @@ var table = new Tabulator("#dashboard-table", {
     ajaxResponse: function (url, params, response) {
         return response.entries;
     },
- 	height:311, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
- 	layout:"fitColumns", //fit columns to width of table (optional)
- 	columns:[ //Define Table Columns
+ 	height:311,
+ 	layout:"fitColumns",
+ 	columns:[
 	 	{title:"Date Issued", field:"date", align:"center", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}, formatter:"datetime", formatterParams:{inputFormat:"MM/DD/YYYY", outputFormat:"MMMM DD[,] YYYY"}},
 	 	{title:"Due Date ", field:"due_date", align:"center", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}, formatter:"datetime", formatterParams:{inputFormat:"MM/DD/YYYY", outputFormat:"MMMM DD[,] YYYY"}},
  	],
