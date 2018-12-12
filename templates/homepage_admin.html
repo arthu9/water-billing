@@ -12,7 +12,8 @@
     <title>WaterBilling - Dashboard</title>
 
     <!--Tabulator extensions CSS-->
-    <link href="../static/tabulator/dist/css/tabulator_site.min.css" rel="stylesheet">
+    <link href="../static/tabulator/dist/css/semantic-ui/tabulator_semantic-ui.min.css" rel="stylesheet">
+    <!-- <link href="../static/tabulator/dist/css/tabulator_site.min.css" rel="stylesheet"> -->
 
     <!-- Bootstrap core CSS-->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
@@ -103,37 +104,16 @@
     </ul>
 
     <div id="content-wrapper">
-        <div class="container-fluid">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-10 col-lg-8">
-                        <form class="card card-sm" action="javascript:search();">
-                            <div class="card-body row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <i class="fas fa-search h4 text-body"></i>
-                                </div>
-                                <!--end of col-->
-                                <div class="col">
-                                    <input id="testme1" class="form-control form-control-lg form-control-borderless"
-                                           type="search" placeholder="Search Person">
-                                </div>
-                                <!--end of col-->
-                                <div class="col-auto">
-                                    <button id="tester" class="btn btn-lg btn-success" type="submit">Search</button>
-                                </div>
-                                <!--end of col-->
-                            </div>
-                        </form>
-                    </div>
-                    <!--end of col-->
-                </div>
-            </div>
-            <div id="memberTable" class="dashboard-table"></div>
-            <ol class="breadcrumb" style="margin-top: 20px">
-                <li class="breadcrumb-item active">User's Bill Information</li>
-            </ol>
-            <div id="displayTable" class="dashboard-table"></div>
-        </div>
+       
+           <!--  <ol class="breadcrumb" style="margin-top: 20px">
+                <li class="breadcrumb-item active">Paid Bills</li>
+            </ol> -->
+            <h5 style="margin-left: 50px">Paid Bills</h5>
+            <div id="paid_table" class="dashboard-table"></div>
+            <h5 style="margin-left: 50px">Unaid Bills</h5>
+            <div id="unpaid_table" class="dashboard-table"></div>
+            <h5 style="margin-left: 50px">Disconnected Bills</h5>
+            <div id="disconnection_table" class="dashboard-table"></div>
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
@@ -190,7 +170,7 @@
 <script type="text/javascript" src="../static/tabulator/dist/js/tabulator.min.js"></script>
 <!--<script type="text/javascript" src="../static/tabulator/dist/js/modules/format.min.js"></script>-->
 <script type="text/javascript" src="../static/js/moment.js"></script>
-<script src="../static/js/homepage_admin_dashboard_table.js"></script>
+<script src="../static/js/dashboard_admin.js"></script>
 
 <script>
 </script>
