@@ -1,8 +1,7 @@
 body {
   background-image: url('../image/water.jpg');
-  /*background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);*/
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
 }
 
 .jumbotron {
@@ -28,4 +27,50 @@ body {
 
 .tabulator .tabulator-col-title {
   text-align: center;
+}
+
+
+.panel-heading {
+  color: white;
+  font-size: 25px;
+  margin-left: 40px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+.luh {
+  font-size: 20px;
+}
+
+.col-md-4 {
+  margin-left: 10px;
+}
+
+.modal-title {
+  margin-top: 40px;
+  font-size: 20px;
+}
+
+.modal-titlee {
+  margin-top: 60px;
+  font-size: 20px;
+}
+
+.modal-titleee {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.modal-titleeee {
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+
+.input-group1 {
+  font-size: 45px;
+}
+
+.status1 {
+  margin-left: 20px;
+  font-size: 10px;
 }
