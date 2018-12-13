@@ -7,12 +7,12 @@ var table = new Tabulator("#example-table", {
     ajaxResponse: function (url, params, response) {
         return response.entries;
     },
-    height: 300,
+    height: 450,
     selectable: false,
     responsiveLayout:"hide",
     groupBy:function(data){
         console.log(data);
-        return moment(data.issued, 'MM-DD-YYYY').format('MMMM DD[,] YYYY');;
+        return ('Latest issued Bill ['+moment(data.issued, 'MM-DD-YYYY').format('MMMM DD[,] YYYY')+']');
     },
     columns: [
         {title: "Lastname", field: "lastname", width: 170, align:"center"},
@@ -27,10 +27,8 @@ var table = new Tabulator("#example-table", {
                 var table_val = cell.getRow().getData().cur_reading;
                 var user_id = cell.getRow().getData().id;
                 var delimiter = $("span#dis_"+user_id).text();
-                console.log(delimiter);
 
                 if (delimiter !== 'Submit'){
-                    console.log('FUCK!')
                 }
                 else if ((cur_date === undefined) || (cur_date === "")) {
                     alert('please select current date')
