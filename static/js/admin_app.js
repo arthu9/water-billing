@@ -1,51 +1,53 @@
 var printIcon = function (cell, formatterParams, onRendered) { //plain text value
-    cur_id = cell.getRow().getData().id;
-    return '<button id="dis_'+cur_id+'" data-toggle="popover" type="button" class="btn btn-primary">Submit</button>';
-};
+    var cur_id = cell.getRow().getData().id;
+    return '<a id="dis_' + cur_id + '"><span id="dis_' + cur_id + '" style="cursor:pointer" class="badge badge-pill badge-primary">Submit</span ></a>';
+    };
 
 var table = new Tabulator("#example-table", {
     ajaxResponse: function (url, params, response) {
         return response.entries;
     },
-    height: 311, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
-    responsiveLayout: "hide",
-    layout: "fitColumns", //fit columns to width of table (optional)
-    columns: [ //Define Table Columns
-        {title: "Lastname", field: "lastname", width: 180},
-        {title: "Firstame", field: "firstname", width: 180},
-        {title: "Date Issued", field: "issued", width: 180, sorter:"date", sorterParams:{format:"MM/DD/YYYY"}, formatter:"datetime", formatterParams:{inputFormat:"MM/DD/YYYY", outputFormat:"MMMM DD[,] YYYY"}},
-        {title: "Previous Reading", field: "prev_reading", width: 180},
-        {title: "New Reading", field: "cur_reading", width:180, sorter: "number", align: "center", editor: "input"},
+    height: 450,
+    selectable: false,
+    responsiveLayout:"hide",
+    groupBy:function(data){
+        console.log(data);
+        return ('Latest issued Bill ['+moment(data.issued, 'MM-DD-YYYY').format('MMMM DD[,] YYYY')+']');
+    },
+    columns: [
+        {title: "Lastname", field: "lastname", width: 170, align:"center"},
+        {title: "Firstame", field: "firstname", width: 170, align:"center"},
+        {title: "Previous Bill Issued", field: "issued", width: 200, align:"center", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}, formatter:"datetime", formatterParams:{inputFormat:"MM/DD/YYYY", outputFormat:"MMMM DD[,] YYYY"}},
+        {title: "Previous Reading", field: "prev_reading", width: 170, selectable: true, align:"center"},
+        {title: "New Reading", field: "cur_reading", width:170, sorter: "number", align: "center", editor: "input"},
         {
-            formatter: printIcon, width: 150, align: "center", cellClick: function (e, cell) {
-                var cur_date = $('input#datepicker').val();
-                var due_date = $('input#datepicker2').val();
+            formatter: printIcon, width: 100, align: "center", cellClick: function (e, cell) {
+                var cur_date = $('input#cur_date').val();
                 var cur_rate = $('input#cur_rate').val();
                 var table_val = cell.getRow().getData().cur_reading;
                 var user_id = cell.getRow().getData().id;
+                var delimiter = $("span#dis_"+user_id).text();
 
-                if ((cur_date === undefined) || (cur_date === "")) {
+                if (delimiter !== 'Submit'){
+                }
+                else if ((cur_date === undefined) || (cur_date === "")) {
                     alert('please select current date')
                 }
                 else {
-                    if ((due_date === undefined) || (due_date === "")) {
-                        alert('please select due date')
+                    if ((cur_rate === undefined) || (cur_rate === "")) {
+                        alert('please select Cubic Meter rate')
                     }
                     else {
-                        if ((cur_rate === undefined) || (cur_rate === "")) {
-                            alert('please select Cubic Meter rate')
+                        if ((table_val === undefined) || (table_val === "")) {
+                            $('button#forsubmit').attr("disabled", true);
+                                alert("Please Enter Data");
                         }
                         else {
-                            if ((table_val === undefined) || (table_val === "")) {
-                                $('button#forsubmit').attr("disabled", true);
-                                alert("Please Enter Data");
-                            }
-                            else if (/^\d+$/.test(table_val) === false) {
+                            if (/^\d+$/.test(table_val) === false) {
                                 alert("Invalid Input");
                             }
                             else {
-                                $('button#dis_'+user_id).attr("disabled",true);
-                                call_ajax(cur_date, due_date, cur_rate, table_val, user_id);
+                                call_ajax(cur_date, cur_rate, table_val, user_id);
                             }
                         }
                     }
@@ -55,8 +57,8 @@ var table = new Tabulator("#example-table", {
     ],
 });
 
-function call_ajax(cur_date, due_date, cur_rate, table_val, user_id) {
-    console.log('was here')
+function call_ajax(cur_date, cur_rate, table_val, user_id) {
+    console.log('was here');
     $.ajax
     ({
         url: "http://localhost:8080/billing",
@@ -64,7 +66,6 @@ function call_ajax(cur_date, due_date, cur_rate, table_val, user_id) {
         data: JSON.stringify({
             'cur_user': user_id,
             'cur_date': cur_date,
-            'due_date': due_date,
             'reading': table_val,
             'rate': cur_rate
         }),
@@ -74,6 +75,7 @@ function call_ajax(cur_date, due_date, cur_rate, table_val, user_id) {
         },
         success: function (resp) {
             if (resp.status === 'ok') {
+                $("a#dis_"+user_id).replaceWith('Submitted');
                 alert("Successfully Added!");
             }
             else {
@@ -84,10 +86,3 @@ function call_ajax(cur_date, due_date, cur_rate, table_val, user_id) {
 }
 
 table.setData('http://localhost:8080/users');
-
-$('#datepicker').datepicker({
-    uiLibrary: 'bootstrap4'
-});
-$('#datepicker2').datepicker({
-    uiLibrary: 'bootstrap4'
-});

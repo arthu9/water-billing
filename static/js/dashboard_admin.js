@@ -43,6 +43,6 @@ let table3 = new Tabulator("#disconnection_table", {
     ]
 });
 
-table1.setData('http://localhost:8080/viewpaid/paid');
-table2.setData('http://localhost:8080/viewpaid/unpaid');
-table3.setData('http://localhost:8080/viewpaid/Disconnected')
+table1.setData('http://localhost:8080/viewpaid/Paid');
+table2.setData('http://localhost:8080/viewpaid/Unpaid');
+table3.setData('http://localhost:8080/viewpaid/Disconnected');
