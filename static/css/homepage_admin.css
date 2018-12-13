@@ -1,5 +1,5 @@
 body{
-	background-image: url("../image/water2.jpg");
+	/*background-image: url("../image/water2.jpg");*/
 }
 
 .form-control-borderless {
@@ -14,6 +14,7 @@ body{
 
 .dashboard-table{
 	margin-left: 10%;
-	margin-right: 10%;
+	margin-right: 50%;
 	margin-top: 3%;
+	width: 80%;
 }
