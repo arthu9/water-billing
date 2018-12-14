@@ -31,8 +31,10 @@ def consumer_dash():
     if session.get('user') == None:
         return render_template('index.html')
     elif str(session['admin_prev']) == 'False':
-        return render_template("homepage_consumer.html", firstname=str(session['firstname']),
-                               lastname=str(session['lastname']), curuser=str(session['user']))
+        resp2 = requests.get("http://localhost:8080/bill/user/" + session['user'])
+        cur_user = resp2.json()
+        return render_template('latestdash_consumer.html', b_info=cur_user['entries'],
+                               firstname=str(session['firstname']), lastname=str(session['lastname']))
     else:
         return redirect(url_for('admin_dash', firstname=str(session['firstname']), lastname=str(session['lastname'])))
 
@@ -42,10 +44,8 @@ def bill_month():
     if session.get('user') == None:
         return render_template('index.html')
     else:
-        resp2 = requests.get("http://localhost:8080/bill/user/" + session['user'])
-        cur_user = resp2.json()
-        return render_template('latestbill_consumer.html', b_info=cur_user['entries'],
-                               firstname=str(session['firstname']), lastname=str(session['lastname']))
+        return render_template("homepage_consumer.html", firstname=str(session['firstname']),
+                               lastname=str(session['lastname']), curuser=str(session['user']))
 
 
 @app.route('/addbill')

@@ -84,112 +84,99 @@
     </ul>
 
     <div id="content-wrapper">
-          <div class="panel-heading">
+        <div class="panel-heading">
             <strong> Bill Details</strong>
-          </div>
+        </div>
 
-        <div class="container">
+        <div class="container" style="margin-left: 3%;">
             <div class="row">
                 <div class="col-md-6" style="background-color: #D5DBDB; height: 450px;">
                     <div class="row">
-                    <div class="col-lg-6">
-                            <h5 class="modal-title">TOTAL AMOUNT DUE</h5>
-                            <div class="input-group1 mb-6">
-                                <div class="input-group-prepend">
-                                    <span id="basic-addon3">27838290</span>
+                        <div class="col-lg-6">
+                            {% for i in b_info %}
+                            <h5 class="modal-title1" style="font-weight: bold">TOTAL AMOUNT DUE</h5>
+                            <div class="container">
+                                <div class="row" style="opacity: 0.5">
+                                    <h6> &nbsp; &nbsp;{{ i.amount }} - this month's bill</h6>
+                                </div>
+                                <div class="row" style="border-bottom: solid; opacity: 0.5">
+                                    <h6>+ {{ i.arrears }} - arrears</h6>
+                                </div>
+                                <div class="row">
+                                    <h4>₱{{ i.total_amount }}</h4>
                                 </div>
                             </div>
 
-                             <h5 class="modal-titlee">Cubic Meter Used</h5>
-                             <div class="input-group mb-6">
-                                <div class="input-group-prepend">
-                                    <span id="basic-addon3">121</span>
-                                </div>
-                            </div>
-
-                             <h5 class="modal-titleee">Reading</h5>
-                             <div class="input-group mb-6">
-                                <div class="input-group-prepend">
-                                    <span id="basic-addon3">2176836</span>
-                                </div>
-                            </div>
-                            
-                            <h5 class="modal-titleeee">Arrears</h5>
+                            <h5 style="font-weight: bold; margin-top: 5%">Cubic Meter Used</h5>
                             <div class="input-group mb-6">
                                 <div class="input-group-prepend">
-                                    <span id="basic-addon3">27838290</span>
+                                    <span id="basic-addon3">{{ i.used_cm }}</span>
+                                </div>
+                            </div>
+
+                            <h5 style="font-weight: bold; margin-top: 5%">Reading</h5>
+                            <div class="input-group mb-6">
+                                <div class="input-group-prepend">
+                                    <span id="basic-addon3">{{ i.reading }}</span>
+                                </div>
+                            </div>
+
+                            <h5 style="font-weight: bold; margin-top: 5%">Arrears</h5>
+                            <div class="input-group mb-6">
+                                <div class="input-group-prepend">
+                                    <span id="basic-addon3">₱{{ i.arrears }}</span>
                                 </div>
                             </div>
                         </div>
 
-                          <div class="col-lg-6">
-                            <h5 class="modal-title">DUE DATE</h5>
+                        <div class="col-lg-6">
+                            <h5 class="modal-title1" style="font-weight: bold">DUE DATE</h5>
                             <div class="input-group1 mb-6">
-                                <div class="input-group-prepend">
-                                    <span id="basic-addon3">Dec 21, 2018</span>
-                                </div>
-                                </div>
+                                <h3>{{ i.due_date }}</h3>
+                            </div>
+
+                            <h5 class="modal-title1" style="font-weight: bold">DATE ISSUED</h5>
+                            <div class="input-group1 mb-6">
+                                <h3>{{ i.date_issued }}</h3>
+                            </div>
                         </div>
-                        </div>
+                    </div>
                 </div>
 
                 <div class=" col-md-4" style="background-color: #D5DBDB;">
-                    <!-- <div class="row col-lg-12"> --> 
-                        <h5 class="modal-title">ACCOUNT INFORMATION</h5>
-                            <div class="input-group1 mb-6">
-                                <div class="input-group-prepend">
-                                    <!-- <span id="basic-addon3">Dec 21, 2018</span> -->
-                                </div>
-                            </div>
-
-                        <h5 class="modal-title">Status</h5>
-                            <div class="status1 mb-6">
-                                <div class="status1">
-                                    <h4><span id="basic-addon3">DISCONNECTED</span></h4>
-                                </div>
-                                </div>
-                        <h5 class="modal-title">Mobile Number</h5>
-                            <div class="input-group1 mb-6">
-                                <div class="input-group-prepend">
-                                    <h2><span id="basic-addon3">09123456789</span></h2>
-                                </div>
-                                </div>
-                       <!--  <div class=" col-md-8">
-                            <div class="column-item">
-                                <b>Month:</b> <span id="month"></span>
-                            </div> 
-                            <div class="column-item">
-                                <b>Due Date:</b> <span id="due"></span>
-                            </div>
-                            <div class="column-item">
-                                 <b>Reading:</b> <span id="reading"></span>
-                            </div>
-                            <div class="column-item">
-                                 <b>Cubic Meter Used:</b> <span id="cubicM"></span>
-                            </div>
-                        </div> -->
-                      <!--   <div class="col-md-4">
-                            <div class="column-item">
-                                <b>Total Amount:</b> <span id="amount"></span>
-                            </div>
-                            <div class="column-item">
-                                <b>Status:</b> <span id="stat"></span>
-                            </div>
-                        </div> -->
+                    <!-- <div class="row col-lg-12"> -->
+                    <h5 class="modal-title1" style="font-weight: bold">ACCOUNT INFORMATION</h5>
+                    <div class="input-group1 mb-6">
+                        <div class="input-group-prepend">
+                            <!-- <span id="basic-addon3">Dec 21, 2018</span> -->
+                        </div>
                     </div>
-                <!-- </div> -->
 
-
-
-                 </div>
+                    <h5 class="modal-title1">Status</h5>
+                    <div class="input-group-prepend">
+                    {% if i.status == 'Good' %}
+                        <h3><span id='warnings' class='text-success'>{{ i.status }}</span></h3>
+                    {% elif i.status == 'Disconnection' %}
+                        <h3><span id='warnings' class='text-danger'>{{ i.status }}</span></h3>
+                    {% endif %}
+                    </div>
+                    <h5 class="modal-title1">Payment Status</h5>
+                        <div class="input-group-prepend">
+                        {% if i.payment_status == 'Paid' %}
+                            <h3><span id='warnings' class='text-success'>{{ i.payment_status }}</span></h3>
+                        {% elif i.payment_status == 'Unpaid' %}
+                            <h3><span id='warnings' class='text-warning'>{{ i.payment_status }}</span></h3>
+                        {% else %}
+                            <h3><span id='warnings' class='text-danger'>{{ i.status }}</span></h3>
+                        {% endif %}
+                        </div>
+                    <h5 class="modal-title1">You have {{ i.unpaid_count }} unpaid bills!</h5>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-
-        <!-- <div class="col-lg-12">
-            <div id="dashboard-table" style="margin: auto;" class=" rounded table table-dark w-75 col-lg-pull-6"></div>
-        </div>
- -->
     </div>
+</div>
 </div>
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
