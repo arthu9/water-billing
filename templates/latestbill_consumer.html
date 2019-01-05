@@ -101,35 +101,35 @@
             <div class="row col-lg-12">
                 <div class=" col-md-8">
                     {% for i in b_info %}
-                    <div class="column-item">
-                        <b>Month: </b>{{ i.date }}
-                    </div>
-                    <div class="column-item">
-                        <b>Due Date: </b> {{ i.due_date }}
-                    </div>
-                    <div class="column-item">
-                        <b>Reading: </b> {{ i.reading }}
-                    </div>
-                    <div class="column-item">
-                        <b>Cubic Meter Used: </b> {{ i.cubic_meters}}
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="column-item">
-                        <b>Total Amount: </b>₱{{ i.amount }}
-                    </div>
-                    <div class="column-item">
-                    <b>Status: </b>
-                        {% if i.status == 'Paid' %}
-                        <span id='warnings' class='text-success'>{{ i.status }}</span>
-                        {% elif i.status == 'Unpaid' %}
-                        <span id='warnings' class='text-warning'>{{ i.status }}</span>
-                        {% else %}
-                        <span id='warnings' class='text-danger'>{{ i.status }}</span>
-                        {% endif %}
-                    </div>
+                        <div class="column-item">
+                            <b>Month: </b>{{ i.date }}
+                        </div>
+                        <div class="column-item">
+                            <b>Due Date: </b> {{ i.due_date }}
+                        </div>
+                        <div class="column-item">
+                            <b>Reading: </b> {{ i.reading }}
+                        </div>
+                        <div class="column-item">
+                            <b>Cubic Meter Used: </b> {{ i.cubic_meters }}
+                        </div>
+                        </div>
+                        <div class="col-md-4">
+                        <div class="column-item">
+                            <b>Total Amount: </b>₱{{ i.amount }}
+                        </div>
+                        <div class="column-item">
+                            <b>Status: </b>
+                            {% if i.status == 'Paid' %}
+                                <span id='warnings' class='text-success'>{{ i.status }}</span>
+                            {% elif i.status == 'Unpaid' %}
+                                <span id='warnings' class='text-warning'>{{ i.status }}</span>
+                            {% else %}
+                                <span id='warnings' class='text-danger'>{{ i.status }}</span>
+                            {% endif %}
+                        </div>
                     {% endfor %}
-                </div>
+                    </div>
             </div>
         </div>
     </div>

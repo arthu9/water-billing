@@ -31,6 +31,17 @@
 </head>
 
 <body id="page-top">
+<nav id="navbarnoti" hidden class="navbar navbar-expand-lg bg-success fixed-top">
+    <div class="container-fluid col-lg-12" style="text-align: center">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-4" style="margin-top: 6px">
+            <h5 id="navbartext" class=""></h5>
+        </div>
+        <div class="col-lg-4">
+        </div>
+    </div>
+</nav>
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -103,22 +114,59 @@
     </ul>
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active">Add Billing Month</li>
+            </ol>
+            <div class="container-fluid" style="margin-bottom: 10px">
+                <form id="new_billing" class="form" action="javascript:add_date();">
+                    <div class="row">
+                        <span>Select Date: </span>
+                        <div class="col-sm">
+                            <input id="new_billingdate" placeholder="Select Date" class="form-control" type="date"
+                                   min="{{ date_filter }}" required>
+                        </div>
+                        <span>Select Rate:</span>
+                        <div class="col-sm">
+                            <input id="new_billingrate" placeholder="Select Rate" class="form-control" type="number"
+                                   min="0.00" step=".01" required>
+                        </div>
+                        <div class="col-sm">
+                            <button id="new_billingbutton" class="btn btn-primary" type="submit">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
 
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active">Add Bills</li>
+                <li class="breadcrumb-item active">Add New Bill Reading</li>
             </ol>
 
             <!-- Page Content -->
-            <div class="row col-lg-12">
-                <span style="margin-left: 20px; margin-right: 10px;">Date:</span>
-                <input id="cur_date" type="date" class="form-control col-lg-3" required/>
-                <span style="margin-left: 20px; margin-right: 10px;">Rate:</span>
-                <input id="cur_rate" type="number" step=".01" class="form-control col-3" required/>
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="col-lg-4">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="date_grp">Select Date</span>
+                                </div>
+                                <select class="custom-select mr-sm-2" id="date_selection" aria-describedby="date_grp">
+                                    <option id="placeholder01" selected disabled>--Select Date--</option>
+                                    {% for i in bill_date %}
+                                        <option>{{ i.bill_dates }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-lg-12" style="margin-top: 10px" id="example-table"></div>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-12" style="margin-top: 10px" id="example-table"></div>
         </div>
         <!-- /.container-fluid -->
 

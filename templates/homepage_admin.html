@@ -92,12 +92,12 @@
                 <span>Search User Bills</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ url_for('.payment') }}">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Payment</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-item" href="#">
+            <a class="nav-link nav-item" href="{{ url_for('.admin_sms') }}">
                 <i class="fas fa-fw fa-table"></i>
                 <span>SMS Blast</span>
             </a>
@@ -105,16 +105,16 @@
     </ul>
 
     <div id="content-wrapper">
-       
-           <!--  <ol class="breadcrumb" style="margin-top: 20px">
-                <li class="breadcrumb-item active">Paid Bills</li>
-            </ol> -->
-            <h5 style="margin-left: 50px">Paid Bills</h5>
-            <div id="paid_table" class="dashboard-table"></div>
-            <h5 style="margin-left: 50px; margin-top: 20px">Unpaid Bills</h5>
-            <div id="unpaid_table" class="dashboard-table"></div>
-            <h5 style="margin-left: 50px; margin-top: 20px">Disconnected Bills</h5>
-            <div id="disconnection_table" class="dashboard-table"></div>
+
+        <!--  <ol class="breadcrumb" style="margin-top: 20px">
+             <li class="breadcrumb-item active">Paid Bills</li>
+         </ol> -->
+        <h5 style="margin-left: 50px">Paid Bills</h5>
+        <div id="paid_table" class="dashboard-table"></div>
+        <h5 style="margin-left: 50px; margin-top: 20px">Unpaid Bills</h5>
+        <div id="unpaid_table" class="dashboard-table"></div>
+        <h5 style="margin-left: 50px; margin-top: 20px">Disconnected Bills</h5>
+        <div id="disconnection_table" class="dashboard-table"></div>
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->

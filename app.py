@@ -26,6 +26,15 @@ def admin_dash():
                                lastname=str(session['lastname']))
 
 
+@app.route('/payment')
+def payment():
+    if session.get('user') == None:
+        return render_template('index.html')
+    else:
+        return render_template("payment_admin.html", firstname=str(session['firstname']),
+                               lastname=str(session['lastname']))
+
+
 @app.route('/dashboard')
 def consumer_dash():
     if session.get('user') == None:
@@ -50,7 +59,23 @@ def bill_month():
 
 @app.route('/addbill')
 def admin_addbill():
-    return render_template("addbill_admin.html", firstname=str(session['firstname']), lastname=str(session['lastname']))
+    resp2 = requests.get("http://localhost:8080/date/distinct")
+    resp3 = requests.get("http://localhost:8080/bill/date/max")
+    json_resp = resp2.json()
+    json_resp2 = resp3.json()
+    max_date = json_resp2['entries'][0]["max_date"]
+    bill_dates = json_resp['entries']
+    return render_template("new_addbill.html", firstname=str(session['firstname']), lastname=str(session['lastname']),
+                           bill_date=bill_dates, date_filter=max_date)
+
+
+@app.route('/sms-blast')
+def admin_sms():
+    resp2 = requests.get("http://localhost:8080/date/distinct")
+    json_resp = resp2.json()
+    bill_dates = json_resp['entries']
+    return render_template("sms_admin.html", firstname=str(session['firstname']), lastname=str(session['lastname']),
+                           bill_date=bill_dates)
 
 
 @app.route('/activation/status')
