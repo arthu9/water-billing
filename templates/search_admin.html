@@ -13,7 +13,7 @@
 
     <!--Tabulator extensions CSS-->
     <link href="../static/tabulator/dist/css/tabulator.min.css" rel="stylesheet">
-    {#    <link href="../static/tabulator/dist/css/tabulator_site.min.css" rel="stylesheet">#}
+    <!--    <link href="../static/tabulator/dist/css/tabulator_site.min.css" rel="stylesheet">-->
 
     <!-- Bootstrap core CSS-->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
@@ -27,9 +27,6 @@
     <!-- Custom styles for this template-->
     <link href="../static/css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../static/css/homepage_admin.css">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
-          integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
 </head>
 
@@ -77,29 +74,33 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url_for('.admin_addbill') }}">
-                <i class="fas fa-fw fa-table"></i>
+                <i class="fas fa-fw fa-plus-square"></i>
                 <span>Add Monthly Bill</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url_for('.activation_status') }}">
-                <i class="fas fa-fw fa-table"></i>
+                <i class="fas fa-fw fa-info"></i>
                 <span>View Activation Status</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url_for('.search_user') }}">
-                <i class="fas fa-fw fa-table"></i>
+                <i class="fas fa-fw fa-search"></i>
                 <span>Search User Bills</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url_for('.payment') }}">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Payment</span></a>
+                <i class="fas fa-fw fa-pen"></i>
+                <span>Update Billing</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-item" href="{{ url_for('.admin_sms') }}">
-                <i class="fas fa-fw fa-table"></i>
-                <span>SMS Blast</span>
-            </a>
+            <a class="nav-link" href="{{ url_for('.admin_sms') }}">
+                <i class="fas fa-fw fa-sms"></i>
+                <span>SMS Blast</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Settings</span></a>
         </li>
     </ul>
 
