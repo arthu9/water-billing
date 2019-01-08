@@ -44,7 +44,7 @@ function add_member() {
             $("button#addButton").attr("disabled", false);
         },
         error: function (e) {
-            console.log(e)
+            console.log('Something went wrong')
         },
         success: function (resp) {
             if (resp.status === 'ok') {

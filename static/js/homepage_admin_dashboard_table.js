@@ -27,7 +27,8 @@ let table2 = new Tabulator("#displayTable", {
         {title: "Due Date", field: "due_date", sorter:"date", sorterParams:{format:"MM/DD/YYYY"}, formatter:"datetime", formatterParams:{inputFormat:"MM/DD/YYYY", outputFormat:"MMMM DD[,] YYYY"}},
         {title: "Reading", field: "reading"},
         {title: "Amount", field: "amount"},
-        {title: "Cubic Meter Used", field: "cubic_meters"}
+        {title: "Cubic Meter Used", field: "cubic_meters"},
+        {title: "Status", field: "status"}
     ],
 });
 

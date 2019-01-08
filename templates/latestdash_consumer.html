@@ -9,8 +9,7 @@
 
     <title>Welcome!</title>
 
-    <!--Tabulator extensions CSS
-    <link href="../static/tabulator/dist/css/tabulator_site.min.css" rel="stylesheet">-->
+    <!--Tabulator extensions CSS-->
     <link href="../static/tabulator/dist/css/bootstrap/tabulator_bootstrap4.min.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS-->
@@ -72,14 +71,14 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url_for('.bill_month') }}">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Bills</span>
+                <i class="fas fa-fw fa-history"></i>
+                <span>Bill History</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Bills History</span></a>
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Settings</span></a>
         </li>
     </ul>
 
@@ -94,85 +93,85 @@
                     <div class="row">
                         <div class="col-lg-6">
                             {% for i in b_info %}
-                            <h5 class="modal-title1" style="font-weight: bold">TOTAL AMOUNT DUE</h5>
-                            <div class="container">
-                                <div class="row" style="opacity: 0.5">
-                                    <h6> &nbsp; &nbsp;{{ i.amount }} - this month's bill</h6>
+                                <h5 class="modal-title1" style="font-weight: bold">TOTAL AMOUNT DUE</h5>
+                                <div class="container">
+                                    <div class="row" style="opacity: 0.5">
+                                        <h6> &nbsp; &nbsp;{{ i.amount }} - this month's bill</h6>
+                                    </div>
+                                    <div class="row" style="border-bottom: solid; opacity: 0.5">
+                                        <h6>+ {{ i.arrears }} - arrears</h6>
+                                    </div>
+                                    <div class="row">
+                                        <h4>₱{{ i.total_amount }}</h4>
+                                    </div>
                                 </div>
-                                <div class="row" style="border-bottom: solid; opacity: 0.5">
-                                    <h6>+ {{ i.arrears }} - arrears</h6>
-                                </div>
-                                <div class="row">
-                                    <h4>₱{{ i.total_amount }}</h4>
-                                </div>
-                            </div>
 
-                            <h5 style="font-weight: bold; margin-top: 5%">Cubic Meter Used</h5>
-                            <div class="input-group mb-6">
+                                <h5 style="font-weight: bold; margin-top: 5%">Cubic Meter Used</h5>
+                                <div class="input-group mb-6">
+                                    <div class="input-group-prepend">
+                                        <span id="basic-addon3">{{ i.used_cm }}</span>
+                                    </div>
+                                </div>
+
+                                <h5 style="font-weight: bold; margin-top: 5%">Reading</h5>
+                                <div class="input-group mb-6">
+                                    <div class="input-group-prepend">
+                                        <span id="basic-addon3">{{ i.reading }}</span>
+                                    </div>
+                                </div>
+
+                                <h5 style="font-weight: bold; margin-top: 5%">Arrears</h5>
+                                <div class="input-group mb-6">
+                                    <div class="input-group-prepend">
+                                        <span id="basic-addon3">₱{{ i.arrears }}</span>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <h5 class="modal-title1" style="font-weight: bold">DUE DATE</h5>
+                                    <div class="input-group1 mb-6">
+                                        <h3>{{ i.due_date }}</h3>
+                                    </div>
+
+                                    <h5 class="modal-title1" style="font-weight: bold">DATE ISSUED</h5>
+                                    <div class="input-group1 mb-6">
+                                        <h3>{{ i.date_issued }}</h3>
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
+
+                                <div class=" col-md-4" style="background-color: #D5DBDB;">
+                                <!-- <div class="row col-lg-12"> -->
+                                <h5 class="modal-title1" style="font-weight: bold">ACCOUNT INFORMATION</h5>
+                                <div class="input-group1 mb-6">
+                                    <div class="input-group-prepend">
+                                        <!-- <span id="basic-addon3">Dec 21, 2018</span> -->
+                                    </div>
+                                </div>
+
+                                <h5 class="modal-title1">Status</h5>
                                 <div class="input-group-prepend">
-                                    <span id="basic-addon3">{{ i.used_cm }}</span>
+                                    {% if i.status == 'Good' %}
+                                        <h3><span id='warnings' class='text-success'>{{ i.status }}</span></h3>
+                                    {% elif i.status == 'Disconnection' %}
+                                        <h3><span id='warnings' class='text-danger'>{{ i.status }}</span></h3>
+                                    {% endif %}
                                 </div>
-                            </div>
-
-                            <h5 style="font-weight: bold; margin-top: 5%">Reading</h5>
-                            <div class="input-group mb-6">
+                                <h5 class="modal-title1">Payment Status</h5>
                                 <div class="input-group-prepend">
-                                    <span id="basic-addon3">{{ i.reading }}</span>
+                                    {% if i.payment_status == 'Paid' %}
+                                        <h3><span id='warnings' class='text-success'>{{ i.payment_status }}</span></h3>
+                                    {% elif i.payment_status == 'Unpaid' %}
+                                        <h3><span id='warnings' class='text-warning'>{{ i.payment_status }}</span></h3>
+                                    {% else %}
+                                        <h3><span id='warnings' class='text-danger'>{{ i.status }}</span></h3>
+                                    {% endif %}
                                 </div>
+                                <h5 class="modal-title1">You have {{ i.unpaid_count }} unpaid bills!</h5>
+                            {% endfor %}
                             </div>
-
-                            <h5 style="font-weight: bold; margin-top: 5%">Arrears</h5>
-                            <div class="input-group mb-6">
-                                <div class="input-group-prepend">
-                                    <span id="basic-addon3">₱{{ i.arrears }}</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <h5 class="modal-title1" style="font-weight: bold">DUE DATE</h5>
-                            <div class="input-group1 mb-6">
-                                <h3>{{ i.due_date }}</h3>
-                            </div>
-
-                            <h5 class="modal-title1" style="font-weight: bold">DATE ISSUED</h5>
-                            <div class="input-group1 mb-6">
-                                <h3>{{ i.date_issued }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class=" col-md-4" style="background-color: #D5DBDB;">
-                    <!-- <div class="row col-lg-12"> -->
-                    <h5 class="modal-title1" style="font-weight: bold">ACCOUNT INFORMATION</h5>
-                    <div class="input-group1 mb-6">
-                        <div class="input-group-prepend">
-                            <!-- <span id="basic-addon3">Dec 21, 2018</span> -->
-                        </div>
-                    </div>
-
-                    <h5 class="modal-title1">Status</h5>
-                    <div class="input-group-prepend">
-                    {% if i.status == 'Good' %}
-                        <h3><span id='warnings' class='text-success'>{{ i.status }}</span></h3>
-                    {% elif i.status == 'Disconnection' %}
-                        <h3><span id='warnings' class='text-danger'>{{ i.status }}</span></h3>
-                    {% endif %}
-                    </div>
-                    <h5 class="modal-title1">Payment Status</h5>
-                        <div class="input-group-prepend">
-                        {% if i.payment_status == 'Paid' %}
-                            <h3><span id='warnings' class='text-success'>{{ i.payment_status }}</span></h3>
-                        {% elif i.payment_status == 'Unpaid' %}
-                            <h3><span id='warnings' class='text-warning'>{{ i.payment_status }}</span></h3>
-                        {% else %}
-                            <h3><span id='warnings' class='text-danger'>{{ i.status }}</span></h3>
-                        {% endif %}
-                        </div>
-                    <h5 class="modal-title1">You have {{ i.unpaid_count }} unpaid bills!</h5>
-                    {% endfor %}
-                </div>
             </div>
         </div>
     </div>

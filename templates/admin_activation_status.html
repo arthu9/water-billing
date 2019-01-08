@@ -9,8 +9,7 @@
 
     <title>Welcome!</title>
 
-    <!--Tabulator extensions CSS
-    <link href="../static/tabulator/dist/css/tabulator_site.min.css" rel="stylesheet">-->
+    <!--Tabulator extensions CSS-->
     <link href="../static/tabulator/dist/css/bootstrap/tabulator_bootstrap4.min.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS-->
@@ -85,29 +84,33 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url_for('.admin_addbill') }}">
-                <i class="fas fa-fw fa-table"></i>
+                <i class="fas fa-fw fa-plus-square"></i>
                 <span>Add Monthly Bill</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url_for('.activation_status') }}">
-                <i class="fas fa-fw fa-table"></i>
+                <i class="fas fa-fw fa-info"></i>
                 <span>View Activation Status</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url_for('.search_user') }}">
-                <i class="fas fa-fw fa-table"></i>
+                <i class="fas fa-fw fa-search"></i>
                 <span>Search User Bills</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Payment</span></a>
+            <a class="nav-link" href="{{ url_for('.payment') }}">
+                <i class="fas fa-fw fa-pen"></i>
+                <span>Update Billing</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-item" href="#">
-                <i class="fas fa-fw fa-table"></i>
-                <span>SMS Blast</span>
-            </a>
+            <a class="nav-link" href="{{ url_for('.admin_sms') }}">
+                <i class="fas fa-fw fa-sms"></i>
+                <span>SMS Blast</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Settings</span></a>
         </li>
     </ul>
 
@@ -224,14 +227,15 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Rate &nbsp; &nbsp;</span>
                                 </div>
-                                <input id="rate" type="number" step=".01" class="form-control"
+                                <input id="rate" type="number" step=".01" min="0.00" class="form-control"
                                        aria-describedby="basic-addon3" required>
                             </div>
                             <div class="input-group mb-6">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon3">Reading &nbsp;</span>
                                 </div>
-                                <input id="reading" type="number" class="form-control" aria-describedby="basic-addon3"
+                                <input id="reading" type="number" class="form-control" min="0"
+                                       aria-describedby="basic-addon3"
                                        required>
                             </div>
                             <div class="input-group mb-6">
@@ -239,14 +243,15 @@
                                     <span class="input-group-text" id="basic-addon3">Amount &nbsp; &nbsp; </span>
                                     <span class="input-group-text">₱</span>
                                 </div>
-                                <input id="amount" type="number" step=".01" class="form-control"
+                                <input id="amount" type="number" step=".01" min="0.00" class="form-control"
                                        aria-describedby="basic-addon3" required>
                             </div>
                             <div class="input-group mb-6">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Cubic Meters Used</span>
                                 </div>
-                                <input id="cmused" type="number" class="form-control" aria-describedby="basic-addon3"
+                                <input id="cmused" type="number" class="form-control" min="0"
+                                       aria-describedby="basic-addon3"
                                        required>
                             </div>
                             <div class="input-group mb-6">
@@ -271,7 +276,6 @@
                                     <option value=""></option>
                                     <option value="Paid">Paid</option>
                                     <option value="Unpaid">Unpaid</option>
-                                    <option value="Disconnection">Disconnection</option>
                                 </select>
                             </div>
                         </div>

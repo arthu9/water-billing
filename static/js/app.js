@@ -34,7 +34,6 @@ function login() {
                 $("#credentials").attr("hidden", false)
             }
             else {
-                console.log(resp);
                 window.location.replace('/dashboard')
             }
         }

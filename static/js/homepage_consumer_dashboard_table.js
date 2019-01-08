@@ -13,8 +13,8 @@ var table = new Tabulator("#dashboard-table", {
         $('span#due').text(moment(row.getData().due_date, 'MM-DD-YYYY').format('MMMM DD[,] YYYY'));
         $('span#reading').text(row.getData().reading);
         $('span#cubicM').text(row.getData().cubic_meters);
+        $('span#arrears').text(row.getData().arrears);
         $('span#amount').text('₱' + row.getData().amount);
-        console.log(row.getData().status);
         if (row.getData().status === 'Unpaid') {
             $('span#warnings').remove();
             $('span#stat').append("<span id='warnings' class='text-warning'>" + row.getData().status + "</span>");
@@ -29,7 +29,6 @@ var table = new Tabulator("#dashboard-table", {
         }
         else {
             $('span#warnings').remove();
-            console.log("not set")
         }
 
 
