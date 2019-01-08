@@ -118,6 +118,10 @@ def register():
         session['user'] = data['user']
         return jsonify(resp.json())
 
+@app.route('/settings')
+def settings_con():
+    return render_template("settings_consumer.html", firstname=str(session['firstname']), lastname=str(session['lastname']))
+
 
 @app.after_request
 def add_cors(resp):
