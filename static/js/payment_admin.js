@@ -1,6 +1,6 @@
 var printIcon = function (cell, formatterParams, onRendered) { //plain text value
     cur_id = cell.getRow().getData().bill_id;
-    return '<button id="dis_' + cur_id + '" data-toggle="popover" type="button" class="btn btn-primary">Paid</button>';
+    return '<button id="dis_' + cur_id + '" data-toggle="popover" type="button" class="btn btn-primary">Change to Paid</button>';
 };
 
 var table = new Tabulator("#paymentTable", {
@@ -35,7 +35,7 @@ var table = new Tabulator("#paymentTable", {
         },
         {
             formatter: printIcon,
-            width: 150,
+            width: 250,
             align: "center",
             cellClick: function (e, cell) {
                 var bill_id = cell.getRow().getData().bill_id;

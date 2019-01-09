@@ -10,8 +10,7 @@ function generate_code_key() {
     for (var i = 0; i < 8; i++)
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-    console.log(text);
-    return text;
+    document.getElementById("activation_code").innerHTML=text;
 
 }
 
