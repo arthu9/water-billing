@@ -74,3 +74,12 @@ body {
   margin-left: 20px;
   font-size: 10px;
 }
+
+#activation_code {
+  margin-top: 14px;
+  margin-left: 5px;
+}
+
+#activation_key {
+  margin-top: 9px;
+}
