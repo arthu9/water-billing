@@ -3,6 +3,18 @@ $(document).ready(function () {
     $("nav#navbarnoti").attr('hidden', false);
 });
 
+function generate_code_key() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < 8; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    console.log(text);
+    return text;
+
+}
+
 function add_member() {
     const firstname = $('input#first').val();
     const lastname = $('input#last').val();
