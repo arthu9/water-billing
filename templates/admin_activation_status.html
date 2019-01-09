@@ -205,13 +205,16 @@
                                        aria-describedby="basic-addon3"
                                        required>
                             </div>
+                            <div class="input-group mb-6">
+                                <button type="button" class="btn btn-outline-dark" onclick="generate_code_key();">Generate Activation Key</button>
+                            </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Activation Key</span>
                                 </div>
                                 <input id="act_code" autocomplete="off" type="text" class="form-control"
                                        aria-describedby="basic-addon3"
-                                       required>
+                                       required value=()>
                                 <div hidden id="add_error" style="padding-left:10em"
                                      class="input-group-prepend invalid-feedback">
                                     Key currently in use.
