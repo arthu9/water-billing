@@ -208,14 +208,20 @@
                                        aria-describedby="basic-addon3"
                                        required>
                             </div>
-                            <div class="input-group mb-6">
-                                <button type="button" class="btn btn-outline-dark" onclick="generate_code_key();">Generate New Activation Key</button>
-                            </div>
                             <div class="input-group">
-                                <div class="input-group-prepend" id="activation_key">
+                                <div class="input-group-prepend">
                                     <span class="input-group-text">Activation Key</span>
                                 </div>
-                                <span id="activation_code"> Here will by your activation key.</span>
+                                <input id="act_code" autocomplete="off" type="text" value="" class="form-control"
+                                       aria-describedby="basic-addon3"
+                                       required>
+                                <div hidden id="add_error" style="padding-left:10em"
+                                     class="input-group-prepend invalid-feedback">
+                                    Key currently in use.
+                                </div>
+                            </div>
+                            <div class="input-group mb-6">
+                                <button type="button" class="btn btn-outline-info" onclick="generate_code_key();">Generate New Activation Key</button>
                             </div>
                         </div>
                         <div class="col-lg-6">

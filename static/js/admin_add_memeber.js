@@ -5,13 +5,13 @@ $(document).ready(function () {
 
 function generate_code_key() {
     var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-    for (var i = 0; i < 8; i++)
+    for (var i = 0; i < 5; i++)
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-    document.getElementById("activation_code").innerHTML=text;
-
+    $('#act_code').val(text);
+    key_validation()
 }
 
 function add_member() {
