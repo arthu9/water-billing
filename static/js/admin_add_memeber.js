@@ -11,7 +11,7 @@ function generate_code_key() {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 
     $('#act_code').val(text);
-    key_validation()
+    key_validation();
 }
 
 function add_member() {
