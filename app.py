@@ -95,6 +95,7 @@ def logout():
     session.pop('firstname', None)
     session.pop('lastname', None)
     session.pop('admin_prev', None)
+    session.pop('mobile_num', None)
     return render_template('index.html')
 
 
@@ -114,6 +115,7 @@ def login():
         cur_user = resp2.json()
         session['firstname'] = cur_user['entries'][0]['firstname']
         session['lastname'] = cur_user['entries'][0]['lastname']
+        session['mobile_num'] = cur_user['entries'][0]['mobile_number']
         session['admin_prev'] = cur_user['entries'][0]['admin_prev']
         session['user'] = data['status']
         return jsonify(resp.json())
@@ -146,8 +148,8 @@ def register():
 
 @app.route('/settings')
 def settings_con():
-    return render_template("settings_consumer.html", firstname=str(session['firstname']), lastname=str(session['lastname']))
-
+    return render_template("settings_consumer.html", firstname=str(session['firstname']),
+                           lastname=str(session['lastname']), mobile=str(session['mobile_num']),curuser=session['user'])
 
 @app.after_request
 def add_cors(resp):

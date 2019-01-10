@@ -44,7 +44,7 @@ let table3 = new Tabulator("#disconnection_table", {
         {title: "Last name", field: "lastname", align: "center"},
         {title: "First name", field: "firstname"},
         {title: "Address", field: "address"},
-        {title: "Mobile Number", field: "mobile"},
+        {title: "Amount", field: "amount"},
         {title: "# of Unpaid Bills", field: "unpaid_count"}
     ]
 });

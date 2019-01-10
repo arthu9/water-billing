@@ -61,8 +61,8 @@ function call_ajax(bill_id) {
         },
         success: function (resp) {
             if (resp.status === 'ok') {
-                alert("Successfully Updated");
-            } else {
+            }
+            else {
                 console.log("Error " + resp.message);
             }
         }

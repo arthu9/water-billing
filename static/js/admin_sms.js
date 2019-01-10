@@ -75,5 +75,26 @@ function send_announcement() {
             console.log('ok')
         }
     });
+}
 
+function send_disconnection() {
+    $.ajax
+    ({
+        url: "http://localhost:8080/sms/disconnection",
+        contentType: 'application/json; charset=utf-8',
+        type: "POST",
+        dataType: "json",
+        beforeSend: function () {
+            $("button#buttonfordisconnection").attr("disabled", true)
+        },
+        complete: function () {
+            $("button#buttonfordisconnection").attr("disabled", false)
+        },
+        error: function (e) {
+            console.log(e)
+        },
+        success: function (resp) {
+            console.log(resp)
+        }
+    });
 }
