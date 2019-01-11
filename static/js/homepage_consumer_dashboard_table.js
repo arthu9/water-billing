@@ -1,3 +1,11 @@
+
+ $(document).ready(function() {
+    if ( unpaid_count === 3) {
+        $('#mymodal').modal('show');
+    }
+    });
+
+
 var table = new Tabulator("#dashboard-table", {
     ajaxResponse: function (url, params, response) {
         return response.entries;
