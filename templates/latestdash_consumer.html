@@ -9,8 +9,6 @@
 
     <title>Welcome!</title>
 
-    <!--Tabulator extensions CSS-->
-    <link href="../static/tabulator/dist/css/bootstrap/tabulator_bootstrap4.min.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS-->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
@@ -102,7 +100,7 @@
                                         <h6>+ {{ i.arrears }} - arrears</h6>
                                     </div>
                                     <div class="row">
-                                        <h4>₱{{ i.total_amount }}</h4>
+                                        <h4 id="total_amount">₱{{ i.total_amount }}</h4>
                                     </div>
                                 </div>
 
@@ -154,9 +152,9 @@
                                 <h5 class="modal-title1">Status</h5>
                                 <div class="input-group-prepend">
                                     {% if i.status == 'Good' %}
-                                        <h3><span id='warnings' class='text-success'>{{ i.status }}</span></h3>
+                                        <h3><span id="status_id" class="text-success">{{ i.status }}</span></h3>
                                     {% elif i.status == 'Disconnection' %}
-                                        <h3><span id='warnings' class='text-danger'>{{ i.status }}</span></h3>
+                                        <h3><span id="status_id" class="text-danger">{{ i.status }}</span></h3>
                                     {% endif %}
                                 </div>
                                 <h5 class="modal-title1">Payment Status</h5>
@@ -196,6 +194,29 @@
         </div>
     </div>
 </div>
+<!-- warning modal -->
+<div class="modal fade" id="warning_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Urgent Notification</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+            {% for i in b_info %}
+                <h4 style="color: red">[WARNING]</h4> Your current status is for DISCONNECTION please settle the amount
+                of ₱{{ i.total_amount }} to avoid disconnection of your water source. Thank you <br> <br style="margin-left: 20px"> -DFRAS WaterBilling System
+            {% endfor %}
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">I understand</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!--table-->
 
 <script src="../static/js/jquery-3.3.1.min.js"></script>
@@ -207,12 +228,15 @@
 <!-- Custom scripts for all pages-->
 <script src="../static/js/sb-admin.min.js"></script>
 <!--Tabulator extensions CSS-->
-<script type="text/javascript" src="../static/tabulator/dist/js/tabulator.min.js"></script>
 <script type="text/javascript" src="../static/js/moment.js"></script>
-<script>var curuser =
-{{ curuser }} </script>
-<script type="text/javascript" src="../static/js/homepage_consumer_dashboard_table.js"></script>
 
-
+<script>
+    {% for i in b_info %}
+    var unpaid_count ={{ i.unpaid_count }};
+    var status ='{{ i.status }}';
+    var amount ={{ i.total_amount }};
+    {% endfor %}
+</script>
+<script type="text/javascript" src="../static/js/modal_dash.js"></script>
 </body>
 </html>
