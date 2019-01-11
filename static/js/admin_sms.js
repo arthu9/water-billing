@@ -1,3 +1,8 @@
+$(document).ready(function () {
+    $("nav#navbarnoti").hide();
+    $("nav#navbarnoti").attr('hidden', false);
+});
+
 $(document).on('change', '#date_selection', function () {
     let date_selected = $('#date_selection option:selected').text();
     table.setData('http://localhost:8080/bill/date/' + date_selected);
@@ -20,7 +25,15 @@ function send_all() {
             console.log(e)
         },
         success: function (resp) {
-            console.log(resp)
+            if (resp.status === 'ok'){
+                $("nav#navbarnoti").slideDown(1000);
+                setTimeout(function () {
+                    $("nav#navbarnoti").slideUp(1000);
+                }, 4000)
+            }
+            else{
+                alert('Something went wrong')
+            }
         }
     });
 }
@@ -47,7 +60,15 @@ function send_date() {
             console.log(e)
         },
         success: function (resp) {
-            console.log(resp)
+            if (resp.status === 'ok'){
+                $("nav#navbarnoti").slideDown(1000);
+                setTimeout(function () {
+                    $("nav#navbarnoti").slideUp(1000);
+                }, 4000)
+            }
+            else{
+                alert('Something went wrong')
+            }
         }
     });
 }
@@ -72,7 +93,15 @@ function send_announcement() {
         error: function (e) {
         },
         success: function (resp) {
-            console.log('ok')
+            if (resp.status === 'ok'){
+                $("nav#navbarnoti").slideDown(1000);
+                setTimeout(function () {
+                    $("nav#navbarnoti").slideUp(1000);
+                }, 4000)
+            }
+            else{
+                alert('Something went wrong')
+            }
         }
     });
 }
@@ -94,7 +123,15 @@ function send_disconnection() {
             console.log(e)
         },
         success: function (resp) {
-            console.log(resp)
+            if (resp.status === 'ok'){
+                $("nav#navbarnoti").slideDown(1000);
+                setTimeout(function () {
+                    $("nav#navbarnoti").slideUp(1000);
+                }, 4000)
+            }
+            else{
+                alert('Something went wrong')
+            }
         }
     });
 }

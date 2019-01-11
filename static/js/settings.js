@@ -1,3 +1,8 @@
+$(document).ready(function () {
+    $("nav#navbarnoti").hide();
+    $("nav#navbarnoti").attr('hidden', false);
+});
+
 function settings_name(){
     let firstname = $('input#firstname').val();
     let lastname = $('input#lastname').val();
@@ -22,8 +27,12 @@ function settings_name(){
         },
         success: function (resp) {
             if (resp.status === 'ok') {
-                alert("Successfully Updated");
+                $("nav#navbarnoti").slideDown(1000);
+                setTimeout(function () {
+                    $("nav#navbarnoti").slideUp(1000);
+                }, 4000)
             } else {
+                alert('Something went wrong');
                 console.log("Error " + resp.message);
             }
         }
@@ -52,8 +61,12 @@ function setting_mobile(){
         },
         success: function (resp) {
             if (resp.status === 'ok') {
-                alert("Successfully Updated");
+                $("nav#navbarnoti").slideDown(1000);
+                setTimeout(function () {
+                    $("nav#navbarnoti").slideUp(1000);
+                }, 4000)
             } else {
+                alert('Something went wrong');
                 console.log("Error " + resp.message);
             }
         }
@@ -82,8 +95,12 @@ function settings_password(){
         },
         success: function (resp) {
             if (resp.status === 'ok') {
-                alert("Successfully Updated");
+                $("nav#navbarnoti").slideDown(1000);
+                setTimeout(function () {
+                    $("nav#navbarnoti").slideUp(1000);
+                }, 4000)
             } else {
+                alert('Something went wrong');
                 console.log("Error " + resp.message);
             }
         }

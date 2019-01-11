@@ -48,7 +48,8 @@ let table3 = new Tabulator("#disconnection_table", {
         {title: "# of Unpaid Bills", field: "unpaid_count"}
     ]
 });
-
-table1.setData('http://localhost:8080/viewpaid/Paid');
-table2.setData('http://localhost:8080/viewpaid/Unpaid');
-table3.setData('http://localhost:8080/bill/disconnection');
+$(document).ready(function () {
+    table1.setData('http://localhost:8080/viewpaid/Paid');
+    table2.setData('http://localhost:8080/viewpaid/Unpaid');
+    table3.setData('http://localhost:8080/bill/disconnection');
+});
