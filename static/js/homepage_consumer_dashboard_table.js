@@ -1,6 +1,6 @@
 
  $(document).ready(function() {
-    if ( unpaid_count === 3) {
+    if ( unpaid_count >= 3) {
         $('#mymodal').modal('show');
     }
     });
