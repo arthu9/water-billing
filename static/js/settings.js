@@ -10,6 +10,7 @@ function settings_name(){
     ({
         url: "http://localhost:8080/account/update/name",
         contentType: 'application/json; charset=utf-8',
+        headers: {Connection: close},
         data: JSON.stringify({
             'acc_id': curuser,
             'firstname': firstname,
@@ -45,6 +46,7 @@ function setting_mobile(){
     ({
         url: "http://localhost:8080/account/update/mobile",
         contentType: 'application/json; charset=utf-8',
+        headers: {Connection: close},
         data: JSON.stringify({
             'acc_id': curuser,
             'mobile_num': mobile_num
@@ -79,6 +81,7 @@ function settings_password(){
     ({
         url: "http://localhost:8080/account/update/password",
         contentType: 'application/json; charset=utf-8',
+        headers: {Connection: close},
         data: JSON.stringify({
             'acc_id': curuser,
             'password': new_pass

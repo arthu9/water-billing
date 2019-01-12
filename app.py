@@ -151,6 +151,13 @@ def settings_con():
     return render_template("settings_consumer.html", firstname=str(session['firstname']),
                            lastname=str(session['lastname']), mobile=str(session['mobile_num']),curuser=session['user'])
 
+
+@app.route('/settings-admin')
+def settings_admin():
+    return render_template("settings_admin.html", firstname=str(session['firstname']),
+                           lastname=str(session['lastname']), mobile=str(session['mobile_num']),curuser=session['user'])
+
+
 @app.after_request
 def add_cors(resp):
     resp.headers['Access-Control-Allow-Origin'] = flask.request.headers.get(
@@ -158,7 +165,8 @@ def add_cors(resp):
     resp.headers['Access-Control-Allow-Credentials'] = True
     resp.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS, GET, PUT, DELETE'
     resp.headers['Access-Control-Allow-Headers'] = flask.request.headers.get('Access-Control-Request-Headers',
-                                                                             'Authorization')
+                                                                             'Authorization', 'Connection')
+    resp.headers['Connection'] = flask.request.headers.get('Connection', 'close')
 
     # set low for debugging
 
